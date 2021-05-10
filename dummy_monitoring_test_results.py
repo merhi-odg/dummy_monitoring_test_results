@@ -1,8 +1,5 @@
 import json
 
-def init():
-    pass
-
 
 # modelop.metrics
 def metrics(df):
