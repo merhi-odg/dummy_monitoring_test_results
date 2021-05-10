@@ -1,0 +1,585 @@
+{
+    "f1_score": 0.6667,
+    "MAE": 0.375,
+    "female_precision_disparity": 1.3333,
+    "female_precision": 0.6667,
+    "num_cards_js": 0.0405,
+    "amount_ks_p_value": 0.6374,
+    "label_es_p_value": 1.0,
+    "amount_stability_index": 1.0184833912404931,
+    "num_cards_stability_ks": 0.20833333333333326,
+    "record_count": 8,
+    "record_count_difference": 2,
+    "identifiers_match": false,
+
+    "roc": [
+        {
+            "fpr": 0,
+            "tpr": 0
+        },
+        {
+            "fpr": 0.5,
+            "tpr": 1
+        },
+        {
+            "fpr": 1,
+            "tpr": 1
+        }
+    ],
+    "interpretability": [
+        {
+            "test_name": "shap",
+            "metric": "feature_importance",
+            "values": {
+                "amount": 3.252,
+                "num_cards": 2.340,
+                "ownership": 1.636
+            }
+        }   
+    ],
+
+    "bias": [
+        {
+            "test_name": "aequitas_bias",
+            "protected_class": "gender",
+            "reference_group": "male",
+            "thresholds": {
+                "min": 0.8,
+                "max": 1.2
+            },
+            "values": [
+                {
+                    "attribute_name": "gender",
+                    "attribute_value": "female",
+                    "ppr_disparity": 1.5,
+                    "pprev_disparity": 1.5,
+                    "precision_disparity": 1.3333,
+                    "fdr_disparity": 0.6667,
+                    "for_disparity": 0.0,
+                    "fpr_disparity": 1.0,
+                    "fnr_disparity": 0.0,
+                    "tpr_disparity": 2.0,
+                    "tnr_disparity": 1.0,
+                    "npv_disparity": 2.0
+                },
+                {
+                    "attribute_name": "gender",
+                    "attribute_value": "male",
+                    "ppr_disparity": 1.0,
+                    "pprev_disparity": 1.0,
+                    "precision_disparity": 1.0,
+                    "fdr_disparity": 1.0,
+                    "for_disparity": 1.0,
+                    "fpr_disparity": 1.0,
+                    "fnr_disparity": 1.0,
+                    "tpr_disparity": 1.0,
+                    "tnr_disparity": 1.0,
+                    "npv_disparity": 1.0
+                }
+            ]
+        },
+        {
+            "test_name": "aequitas_group",
+            "protected_class": "gender",
+            "reference_group": null,
+            "values": [
+                {
+                    "attribute_name": "gender",
+                    "attribute_value": "female",
+                    "tpr": 1.0,
+                    "tnr": 0.5,
+                    "for": 0.0,
+                    "fdr": 0.3333,
+                    "fpr": 0.5,
+                    "fnr": 0.0,
+                    "npv": 1.0,
+                    "precision": 0.6667,
+                    "ppr": 0.6,
+                    "pprev": 0.75,
+                    "prev": 0.5
+                },
+                {
+                    "attribute_name": "gender",
+                    "attribute_value": "male",
+                    "tpr": 0.5,
+                    "tnr": 0.5,
+                    "for": 0.5,
+                    "fdr": 0.5,
+                    "fpr": 0.5,
+                    "fnr": 0.5,
+                    "npv": 0.5,
+                    "precision": 0.5,
+                    "ppr": 0.4,
+                    "pprev": 0.5,
+                    "prev": 0.5
+                }
+            ]
+        }
+    ],
+    "performance": [
+        {
+            "test_name": "classification_metrics",
+            "values": {
+                "accuracy": 0.625,
+                "precision": 0.6,
+                "recall": 0.75,
+                "f1": 0.6667,
+                "auc": 0.625,
+                "confusion_matrix": [
+                    {
+                        "Default": 10,
+                        "Pay-Off": 20
+                    },
+                    {
+                        "Default": 30,
+                        "Pay-Off": 40
+                    }
+                ]
+            }
+        },
+        {
+            "test_name": "regression_metrics",
+            "values": {
+                "rmse": 0.6124,
+                "mae": 0.375,
+                "r2": -0.5
+            }
+        }
+    ],
+    "data_drift": [
+        {
+            "test_name": "jensen-shannon",
+            "metric": "distance",
+            "values": {
+                "ownership": 0.0892,
+                "amount": 0.073,
+                "num_cards": 0.0405
+            }
+        },
+        {
+            "test_name": "kolmogorov-smirnov",
+            "metric": "p-value",
+            "values": {
+                "amount": 0.6374,
+                "num_cards": 1.0
+            }
+        },
+        {
+            "test_name": "epps-singleton",
+            "metric": "p-value",
+            "values": {
+                "amount": 0.8544,
+                "num_cards": 0.9244
+            }
+        },
+        {
+            "test_name": "summary",
+            "metric": "pandas.describe()",
+            "values": {
+                "numerical_comparisons": {
+                    "amount": {
+                        "baseline": {
+                            "count": 8.0,
+                            "mean": 159.375,
+                            "std": 32.56175451573298,
+                            "min": 100.0,
+                            "25%": 143.75,
+                            "50%": 175.0,
+                            "75%": 175.0,
+                            "max": 200.0
+                        },
+                        "sample": {
+                            "count": 6.0,
+                            "mean": 171.66666666666666,
+                            "std": 28.751811537130433,
+                            "min": 125.0,
+                            "25%": 156.25,
+                            "50%": 182.5,
+                            "75%": 190.0,
+                            "max": 200.0
+                        }
+                    },
+                    "num_cards": {
+                        "baseline": {
+                            "count": 8.0,
+                            "mean": 3.5,
+                            "std": 3.2071349029490928,
+                            "min": 0.0,
+                            "25%": 1.0,
+                            "50%": 2.5,
+                            "75%": 5.5,
+                            "max": 9.0
+                        },
+                        "sample": {
+                            "count": 6.0,
+                            "mean": 3.3333333333333335,
+                            "std": 2.7325202042558927,
+                            "min": 1.0,
+                            "25%": 1.25,
+                            "50%": 2.5,
+                            "75%": 4.5,
+                            "max": 8.0
+                        }
+                    }
+                },
+                "categorical_comparisons": {
+                    "ownership": {
+                        "baseline": {
+                            "count": 8,
+                            "unique": 2,
+                            "top": "own",
+                            "freq": 5
+                        },
+                        "sample": {
+                            "count": 6,
+                            "unique": 2,
+                            "top": "own",
+                            "freq": 3
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "concept_drift": [
+        {
+            "test_name": "jensen-shannon",
+            "metric": "distance",
+            "values": {
+                "label": 0.0
+            }
+        },
+        {
+            "test_name": "kolmogorov-smirnov",
+            "metric": "p-value",
+            "values": {
+                "label": 1.0
+            }
+        },
+        {
+            "test_name": "epps-singleton",
+            "metric": "p-value",
+            "values": {
+                "label": 1.0
+            }
+        },
+        {
+            "test_name": "describe",
+            "metric": "pandas.describe()",
+            "values": {
+                "numerical_comparisons": {},
+                "categorical_comparisons": {
+                    "label": {
+                        "baseline": {
+                            "count": 8.0,
+                            "mean": 0.5,
+                            "std": 0.5345224838248488,
+                            "min": 0.0,
+                            "25%": 0.0,
+                            "50%": 0.5,
+                            "75%": 1.0,
+                            "max": 1.0
+                        },
+                        "sample": {
+                            "count": 6.0,
+                            "mean": 0.5,
+                            "std": 0.5477225575051661,
+                            "min": 0.0,
+                            "25%": 0.0,
+                            "50%": 0.5,
+                            "75%": 1.0,
+                            "max": 1.0
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "stability": [
+        {
+            "test_name": "stability_analysis",
+            "values": {
+                "amount": {
+                    "stability_analysis_table": [
+                        {
+                            "bucket": "100 125 ",
+                            "train_count": 3.0,
+                            "eval_count": 1.0,
+                            "train_percent": 0.25,
+                            "eval_percent": 0.125,
+                            "train_mean_score": 0.6666666666666666,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": -0.6666666666666666,
+                            "train_cum_percent": 0.25,
+                            "eval_cum_percent": 0.125,
+                            "ks_calc": 0.125,
+                            "chisq_calc": 0.0625,
+                            "psi_calc": 0.08664339756999316
+                        },
+                        {
+                            "bucket": "175 ",
+                            "train_count": 6.0,
+                            "eval_count": 2.0,
+                            "train_percent": 0.5,
+                            "eval_percent": 0.25,
+                            "train_mean_score": 0.6666666666666666,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": -0.6666666666666666,
+                            "train_cum_percent": 0.75,
+                            "eval_cum_percent": 0.375,
+                            "ks_calc": 0.375,
+                            "chisq_calc": 0.125,
+                            "psi_calc": 0.17328679513998632
+                        },
+                        {
+                            "bucket": "(-inf, 150.0]",
+                            "train_count": 2.0,
+                            "eval_count": 1.0,
+                            "train_percent": 0.16666666666666666,
+                            "eval_percent": 0.125,
+                            "train_mean_score": 1.0,
+                            "eval_mean_score": 1.0,
+                            "score_mean_diff": 0.0,
+                            "train_cum_percent": 0.9166666666666666,
+                            "eval_cum_percent": 0.5,
+                            "ks_calc": 0.41666666666666663,
+                            "chisq_calc": 0.010416666666666663,
+                            "psi_calc": 0.011986753018824202
+                        },
+                        {
+                            "bucket": "(150.0, inf]",
+                            "train_count": 1.0,
+                            "eval_count": 4.0,
+                            "train_percent": 0.08333333333333333,
+                            "eval_percent": 0.5,
+                            "train_mean_score": 0.0,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": 0.0,
+                            "train_cum_percent": 1.0,
+                            "eval_cum_percent": 1.0,
+                            "ks_calc": 0.0,
+                            "chisq_calc": 2.083333333333334,
+                            "psi_calc": 0.7465664455116896
+                        }
+                    ],
+                    "stability_index": 1.0184833912404931,
+                    "stability_chisq": 2.2812500000000004,
+                    "stability_ks": 0.41666666666666663
+                },
+                "ownership": {
+                    "stability_analysis_table": [
+                        {
+                            "bucket": "own",
+                            "train_count": 7.0,
+                            "eval_count": 5.0,
+                            "train_percent": 0.5833333333333334,
+                            "eval_percent": 0.625,
+                            "train_mean_score": 0.5714285714285714,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": -0.5714285714285714,
+                            "train_cum_percent": 0.5833333333333334,
+                            "eval_cum_percent": 0.625,
+                            "ks_calc": 0.04166666666666663,
+                            "chisq_calc": 0.002976190476190471,
+                            "psi_calc": 0.0028747029786229733
+                        },
+                        {
+                            "bucket": "rent",
+                            "train_count": 5.0,
+                            "eval_count": 3.0,
+                            "train_percent": 0.4166666666666667,
+                            "eval_percent": 0.375,
+                            "train_mean_score": 0.8,
+                            "eval_mean_score": 0.3333333333333333,
+                            "score_mean_diff": -0.46666666666666673,
+                            "train_cum_percent": 1.0,
+                            "eval_cum_percent": 1.0,
+                            "ks_calc": 0.0,
+                            "chisq_calc": 0.00416666666666667,
+                            "psi_calc": 0.004390021485742769
+                        }
+                    ],
+                    "stability_index": 0.007264724464365742,
+                    "stability_chisq": 0.007142857142857141,
+                    "stability_ks": 0.04166666666666663
+                },
+                "num_cards": {
+                    "stability_analysis_table": [
+                        {
+                            "bucket": "(-inf, 1.0]",
+                            "train_count": 5.0,
+                            "eval_count": 2.0,
+                            "train_percent": 0.4166666666666667,
+                            "eval_percent": 0.25,
+                            "train_mean_score": 0.8,
+                            "eval_mean_score": 0.5,
+                            "score_mean_diff": -0.30000000000000004,
+                            "train_cum_percent": 0.4166666666666667,
+                            "eval_cum_percent": 0.25,
+                            "ks_calc": 0.16666666666666669,
+                            "chisq_calc": 0.06666666666666668,
+                            "psi_calc": 0.08513760396099847
+                        },
+                        {
+                            "bucket": "(1.0, 6.0]",
+                            "train_count": 3.0,
+                            "eval_count": 5.0,
+                            "train_percent": 0.25,
+                            "eval_percent": 0.625,
+                            "train_mean_score": 0.6666666666666666,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": -0.6666666666666666,
+                            "train_cum_percent": 0.6666666666666667,
+                            "eval_cum_percent": 0.875,
+                            "ks_calc": 0.20833333333333326,
+                            "chisq_calc": 0.5625,
+                            "psi_calc": 0.34360902445280816
+                        },
+                        {
+                            "bucket": "(6.0, inf]",
+                            "train_count": 4.0,
+                            "eval_count": 1.0,
+                            "train_percent": 0.3333333333333333,
+                            "eval_percent": 0.125,
+                            "train_mean_score": 0.5,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": -0.5,
+                            "train_cum_percent": 1.0,
+                            "eval_cum_percent": 1.0,
+                            "ks_calc": 0.0,
+                            "chisq_calc": 0.13020833333333331,
+                            "psi_calc": 0.20433942771077626
+                        }
+                    ],
+                    "stability_index": 0.6330860561245829,
+                    "stability_chisq": 0.7593749999999999,
+                    "stability_ks": 0.20833333333333326
+                },
+                "score": {
+                    "stability_analysis_table": [
+                        {
+                            "bucket": "0",
+                            "train_count": 4.0,
+                            "eval_count": 7.0,
+                            "train_percent": 0.3333333333333333,
+                            "eval_percent": 0.875,
+                            "train_mean_score": 0.0,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": 0.0,
+                            "train_cum_percent": 0.3333333333333333,
+                            "eval_cum_percent": 0.875,
+                            "ks_calc": 0.5416666666666667,
+                            "chisq_calc": 0.8802083333333336,
+                            "psi_calc": 0.5227521520236097
+                        },
+                        {
+                            "bucket": "1",
+                            "train_count": 8.0,
+                            "eval_count": 1.0,
+                            "train_percent": 0.6666666666666666,
+                            "eval_percent": 0.125,
+                            "train_mean_score": 1.0,
+                            "eval_mean_score": 1.0,
+                            "score_mean_diff": 0.0,
+                            "train_cum_percent": 1.0,
+                            "eval_cum_percent": 1.0,
+                            "ks_calc": 0.0,
+                            "chisq_calc": 0.44010416666666663,
+                            "psi_calc": 0.9067372348513221
+                        }
+                    ],
+                    "stability_index": 1.4294893868749319,
+                    "stability_chisq": 1.3203125000000002,
+                    "stability_ks": 0.5416666666666667
+                }
+            }
+        }
+    ],
+    "volumetrics": [
+        {
+            "test_name": "count",
+            "values": {
+                "record_count": 8
+            }
+        },
+        {
+            "test_name": "count_comparison",
+            "values": {
+                "dataframe_1_record_count": 8,
+                "dataframe_2_record_count": 6,
+                "record_count_difference": 2
+            }
+        },
+        {
+            "test_name": "summary",
+            "values": {
+                "numerical_summary": {
+                    "amount": {
+                        "count": 8.0,
+                        "mean": 159.375,
+                        "std": 32.56175451573298,
+                        "min": 100.0,
+                        "25%": 143.75,
+                        "50%": 175.0,
+                        "75%": 175.0,
+                        "max": 200.0
+                    },
+                    "num_cards": {
+                        "count": 8.0,
+                        "mean": 3.5,
+                        "std": 3.2071349029490928,
+                        "min": 0.0,
+                        "25%": 1.0,
+                        "50%": 2.5,
+                        "75%": 5.5,
+                        "max": 9.0
+                    }
+                },
+                "categorical_summary": {
+                    "ownership": {
+                        "count": 8,
+                        "unique": 2,
+                        "top": "own",
+                        "freq": 5
+                    }
+                }
+            }
+        },
+        {
+            "test_name": "identifier_comparison",
+            "values": {
+                "identifiers_match": false,
+                "dataframe_1": {
+                    "identifier_columns": [
+                        "id"
+                    ],
+                    "record_count": 8,
+                    "unique_identifier_count": 8,
+                    "extra_identifiers": {
+                        "total": 4,
+                        "breakdown": {
+                            "4": 1,
+                            "5": 1,
+                            "7": 1,
+                            "6": 1
+                        }
+                    }
+                },
+                "dataframe_2": {
+                    "identifier_columns": [
+                        "id"
+                    ],
+                    "record_count": 6,
+                    "unique_identifier_count": 6,
+                    "extra_identifiers": {
+                        "total": 2,
+                        "breakdown": {
+                            "12": 1,
+                            "11": 1
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
