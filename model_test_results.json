@@ -29,6 +29,7 @@
     "interpretability": [
         {
             "test_name": "shap",
+            "test_category": "interpretability",
             "metric": "feature_importance",
             "values": {
                 "amount": 3.252,
@@ -41,6 +42,7 @@
     "bias": [
         {
             "test_name": "aequitas_bias",
+            "test_category": "bias",
             "protected_class": "gender",
             "reference_group": "male",
             "thresholds": {
@@ -80,6 +82,7 @@
         },
         {
             "test_name": "aequitas_group",
+            "test_category": "bias",
             "protected_class": "gender",
             "reference_group": null,
             "values": [
@@ -119,6 +122,7 @@
     "performance": [
         {
             "test_name": "classification_metrics",
+            "test_category": "performance",
             "values": {
                 "accuracy": 0.625,
                 "precision": 0.6,
@@ -139,6 +143,7 @@
         },
         {
             "test_name": "regression_metrics",
+            "test_category": "performance",
             "values": {
                 "rmse": 0.6124,
                 "mae": 0.375,
@@ -149,6 +154,7 @@
     "data_drift": [
         {
             "test_name": "jensen-shannon",
+            "test_category": "data_drift",
             "metric": "distance",
             "values": {
                 "ownership": 0.0892,
@@ -158,6 +164,7 @@
         },
         {
             "test_name": "kolmogorov-smirnov",
+            "test_category": "data_drift",
             "metric": "p-value",
             "values": {
                 "amount": 0.6374,
@@ -166,6 +173,7 @@
         },
         {
             "test_name": "epps-singleton",
+            "test_category": "data_drift",
             "metric": "p-value",
             "values": {
                 "amount": 0.8544,
@@ -174,6 +182,7 @@
         },
         {
             "test_name": "summary",
+            "test_category": "data_drift",
             "metric": "pandas.describe()",
             "values": {
                 "numerical_comparisons": {
@@ -244,6 +253,7 @@
     "concept_drift": [
         {
             "test_name": "jensen-shannon",
+            "test_category": "concept_drift",
             "metric": "distance",
             "values": {
                 "label": 0.0
@@ -251,6 +261,7 @@
         },
         {
             "test_name": "kolmogorov-smirnov",
+            "test_category": "concept_drift",
             "metric": "p-value",
             "values": {
                 "label": 1.0
@@ -258,6 +269,7 @@
         },
         {
             "test_name": "epps-singleton",
+            "test_category": "concept_drift",
             "metric": "p-value",
             "values": {
                 "label": 1.0
@@ -265,6 +277,7 @@
         },
         {
             "test_name": "describe",
+            "test_category": "concept_drift",
             "metric": "pandas.describe()",
             "values": {
                 "numerical_comparisons": {},
@@ -298,6 +311,7 @@
     "stability": [
         {
             "test_name": "stability_analysis",
+            "test_category": "stability",
             "values": {
                 "amount": {
                     "stability_analysis_table": [
@@ -498,12 +512,14 @@
     "volumetrics": [
         {
             "test_name": "count",
+            "test_category": "volumetrics",
             "values": {
                 "record_count": 8
             }
         },
         {
             "test_name": "count_comparison",
+            "test_category": "volumetrics",
             "values": {
                 "dataframe_1_record_count": 8,
                 "dataframe_2_record_count": 6,
@@ -512,6 +528,7 @@
         },
         {
             "test_name": "summary",
+            "test_category": "volumetrics",
             "values": {
                 "numerical_summary": {
                     "amount": {
@@ -547,6 +564,7 @@
         },
         {
             "test_name": "identifier_comparison",
+            "test_category": "volumetrics",
             "values": {
                 "identifiers_match": false,
                 "dataframe_1": {
