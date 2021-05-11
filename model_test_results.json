@@ -1,8 +1,8 @@
 {
     "f1_score": 0.6667,
     "MAE": 0.375,
-    "female_precision_disparity": 1.3333,
-    "female_precision": 0.6667,
+    "female_precision_disparity": 1.5,
+    "female_precision": 0.75,
     "num_cards_js": 0.0405,
     "amount_ks_p_value": 0.6374,
     "label_es_p_value": 1.0,
@@ -11,15 +11,22 @@
     "record_count": 8,
     "record_count_difference": 2,
     "identifiers_match": false,
-
     "roc": [
         {
             "fpr": 0,
             "tpr": 0
         },
         {
+            "fpr": 0.25,
+            "tpr": 0.3
+        },
+        {
             "fpr": 0.5,
-            "tpr": 1
+            "tpr": 0.65
+        },
+        {
+            "fpr": 0.75,
+            "tpr": 0.9
         },
         {
             "fpr": 1,
@@ -28,21 +35,142 @@
     ],
     "interpretability": [
         {
-            "test_name": "shap",
+            "test_name": "SHAP",
             "test_category": "interpretability",
+            "test_type": "shap",
             "metric": "feature_importance",
             "values": {
                 "amount": 3.252,
                 "num_cards": 2.340,
                 "ownership": 1.636
             }
-        }   
+        },
+        {
+            "test_name": "LIME",
+            "test_category": "interpretability",
+            "test_type": "LIME",
+            "metric": "feature_importance",
+            "values": {
+                "amount": 3.152,
+                "num_cards": 2.140,
+                "ownership": 1.836
+            }
+        }
     ],
-
     "bias": [
         {
-            "test_name": "aequitas_bias",
+            "test_name": "Aequitas Bias",
             "test_category": "bias",
+            "test_type": "bias",
+            "protected_class": "race",
+            "reference_group": "caucasian",
+            "thresholds": {
+                "min": 0.8,
+                "max": 1.2
+            },
+            "values": [
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "african-american",
+                    "ppr_disparity": 0.3333,
+                    "pprev_disparity": 0.7778,
+                    "precision_disparity": 1.0,
+                    "fdr_disparity": null,
+                    "for_disparity": 2.0,
+                    "fpr_disparity": null,
+                    "fnr_disparity": 2.0,
+                    "tpr_disparity": 0.6667,
+                    "tnr_disparity": 1.0,
+                    "npv_disparity": 0.6667
+                },
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "asian",
+                    "ppr_disparity": 0.6667,
+                    "pprev_disparity": 1.1667,
+                    "precision_disparity": 0.0,
+                    "fdr_disparity": 10.0,
+                    "for_disparity": 2.0,
+                    "fpr_disparity": 10.0,
+                    "fnr_disparity": 4.0,
+                    "tpr_disparity": 0.0,
+                    "tnr_disparity": 0.3333,
+                    "npv_disparity": 0.6667
+                },
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "caucasian",
+                    "ppr_disparity": 1.0,
+                    "pprev_disparity": 1.0,
+                    "precision_disparity": 1.0,
+                    "fdr_disparity": null,
+                    "for_disparity": 1.0,
+                    "fpr_disparity": null,
+                    "fnr_disparity": 1.0,
+                    "tpr_disparity": 1.0,
+                    "tnr_disparity": 1.0,
+                    "npv_disparity": 1.0
+                }
+            ]
+        },
+        {
+            "test_name": "Aequitas Group",
+            "test_category": "bias",
+            "test_type": "group",
+            "protected_class": "race",
+            "reference_group": null,
+            "values": [
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "african-american",
+                    "tpr": 0.5,
+                    "tnr": 1.0,
+                    "for": 0.5,
+                    "fdr": 0.0,
+                    "fpr": 0.0,
+                    "fnr": 0.5,
+                    "npv": 0.5,
+                    "precision": 1.0,
+                    "ppr": 0.1667,
+                    "pprev": 0.3333,
+                    "prev": 0.6667
+                },
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "asian",
+                    "tpr": 0.0,
+                    "tnr": 0.3333,
+                    "for": 0.5,
+                    "fdr": 1.0,
+                    "fpr": 0.6667,
+                    "fnr": 1.0,
+                    "npv": 0.5,
+                    "precision": 0.0,
+                    "ppr": 0.3333,
+                    "pprev": 0.5,
+                    "prev": 0.25
+                },
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "caucasian",
+                    "tpr": 0.75,
+                    "tnr": 1.0,
+                    "for": 0.25,
+                    "fdr": 0.0,
+                    "fpr": 0.0,
+                    "fnr": 0.25,
+                    "npv": 0.75,
+                    "precision": 1.0,
+                    "ppr": 0.5,
+                    "pprev": 0.4286,
+                    "prev": 0.5714
+                }
+            ]
+        },
+        {
+            "test_name": "Aequitas Bias",
+            "test_category": "bias",
+            "test_type": "bias",
             "protected_class": "gender",
             "reference_group": "male",
             "thresholds": {
@@ -53,16 +181,16 @@
                 {
                     "attribute_name": "gender",
                     "attribute_value": "female",
-                    "ppr_disparity": 1.5,
-                    "pprev_disparity": 1.5,
-                    "precision_disparity": 1.3333,
-                    "fdr_disparity": 0.6667,
-                    "for_disparity": 0.0,
-                    "fpr_disparity": 1.0,
-                    "fnr_disparity": 0.0,
-                    "tpr_disparity": 2.0,
-                    "tnr_disparity": 1.0,
-                    "npv_disparity": 2.0
+                    "ppr_disparity": 2.0,
+                    "pprev_disparity": 2.0,
+                    "precision_disparity": 1.5,
+                    "fdr_disparity": 0.5,
+                    "for_disparity": 0.8333,
+                    "fpr_disparity": 1.3333,
+                    "fnr_disparity": 0.375,
+                    "tpr_disparity": 2.25,
+                    "tnr_disparity": 0.8889,
+                    "npv_disparity": 1.1111
                 },
                 {
                     "attribute_name": "gender",
@@ -81,80 +209,74 @@
             ]
         },
         {
-            "test_name": "aequitas_group",
+            "test_name": "Aequitas Group",
             "test_category": "bias",
+            "test_type": "group",
             "protected_class": "gender",
             "reference_group": null,
             "values": [
                 {
                     "attribute_name": "gender",
                     "attribute_value": "female",
-                    "tpr": 1.0,
-                    "tnr": 0.5,
-                    "for": 0.0,
-                    "fdr": 0.3333,
-                    "fpr": 0.5,
-                    "fnr": 0.0,
-                    "npv": 1.0,
-                    "precision": 0.6667,
-                    "ppr": 0.6,
-                    "pprev": 0.75,
-                    "prev": 0.5
+                    "tpr": 0.75,
+                    "tnr": 0.6667,
+                    "for": 0.3333,
+                    "fdr": 0.25,
+                    "fpr": 0.3333,
+                    "fnr": 0.25,
+                    "npv": 0.6667,
+                    "precision": 0.75,
+                    "ppr": 0.6667,
+                    "pprev": 0.5714,
+                    "prev": 0.5714
                 },
                 {
                     "attribute_name": "gender",
                     "attribute_value": "male",
-                    "tpr": 0.5,
-                    "tnr": 0.5,
-                    "for": 0.5,
+                    "tpr": 0.3333,
+                    "tnr": 0.75,
+                    "for": 0.4,
                     "fdr": 0.5,
-                    "fpr": 0.5,
-                    "fnr": 0.5,
-                    "npv": 0.5,
+                    "fpr": 0.25,
+                    "fnr": 0.6667,
+                    "npv": 0.6,
                     "precision": 0.5,
-                    "ppr": 0.4,
-                    "pprev": 0.5,
-                    "prev": 0.5
+                    "ppr": 0.3333,
+                    "pprev": 0.2857,
+                    "prev": 0.4286
                 }
             ]
         }
     ],
     "performance": [
         {
-            "test_name": "classification_metrics",
+            "test_name": "Classification Metrics",
             "test_category": "performance",
+            "test_type": "classification_metrics",
             "values": {
                 "accuracy": 0.625,
                 "precision": 0.6,
                 "recall": 0.75,
-                "f1": 0.6667,
-                "auc": 0.625,
-                "confusion_matrix": [
-                    {
-                        "Default": 10,
-                        "Pay-Off": 20
-                    },
-                    {
-                        "Default": 30,
-                        "Pay-Off": 40
-                    }
-                ]
+                "f1_score": 0.6667,
+                "auc": 0.625
             }
         },
         {
-            "test_name": "regression_metrics",
+            "test_name": "Regression Metrics",
             "test_category": "performance",
+            "test_type": "regression_metrics",
             "values": {
                 "rmse": 0.6124,
                 "mae": 0.375,
-                "r2": -0.5
+                "r2_score": -0.5
             }
         }
     ],
     "data_drift": [
         {
-            "test_name": "jensen-shannon",
+            "test_name": "Jensen-Shannon",
             "test_category": "data_drift",
+            "test_type": "jensen-shannon",
             "metric": "distance",
             "values": {
                 "ownership": 0.0892,
@@ -163,8 +285,9 @@
             }
         },
         {
-            "test_name": "kolmogorov-smirnov",
+            "test_name": "Kolmogorov-Smirnov",
             "test_category": "data_drift",
+            "test_type": "kolmogorov-smirnov",
             "metric": "p-value",
             "values": {
                 "amount": 0.6374,
@@ -172,8 +295,9 @@
             }
         },
         {
-            "test_name": "epps-singleton",
+            "test_name": "Epps-Singleton",
             "test_category": "data_drift",
+            "test_type": "epps-singleton",
             "metric": "p-value",
             "values": {
                 "amount": 0.8544,
@@ -181,8 +305,9 @@
             }
         },
         {
-            "test_name": "summary",
+            "test_name": "Summary",
             "test_category": "data_drift",
+            "test_type": "summary",
             "metric": "pandas.describe()",
             "values": {
                 "numerical_comparisons": {
@@ -242,7 +367,7 @@
                         "sample": {
                             "count": 6,
                             "unique": 2,
-                            "top": "own",
+                            "top": "rent",
                             "freq": 3
                         }
                     }
@@ -252,32 +377,36 @@
     ],
     "concept_drift": [
         {
-            "test_name": "jensen-shannon",
+            "test_name": "Jensen-Shannon",
             "test_category": "concept_drift",
+            "test_type": "jensen-shannon",
             "metric": "distance",
             "values": {
                 "label": 0.0
             }
         },
         {
-            "test_name": "kolmogorov-smirnov",
+            "test_name": "Kolmogorov-Smirnov",
             "test_category": "concept_drift",
+            "test_type": "kolmogorov-smirnov",
             "metric": "p-value",
             "values": {
                 "label": 1.0
             }
         },
         {
-            "test_name": "epps-singleton",
+            "test_name": "Epps-Singleton",
             "test_category": "concept_drift",
+            "test_type": "epps-singleton",
             "metric": "p-value",
             "values": {
                 "label": 1.0
             }
         },
         {
-            "test_name": "describe",
+            "test_name": "Summary",
             "test_category": "concept_drift",
+            "test_type": "summary",
             "metric": "pandas.describe()",
             "values": {
                 "numerical_comparisons": {},
@@ -310,8 +439,9 @@
     ],
     "stability": [
         {
-            "test_name": "stability_analysis",
+            "test_name": "Stability Analysis",
             "test_category": "stability",
+            "test_type": "stability_analysis",
             "values": {
                 "amount": {
                     "stability_analysis_table": [
@@ -511,15 +641,17 @@
     ],
     "volumetrics": [
         {
-            "test_name": "count",
+            "test_name": "Count",
             "test_category": "volumetrics",
+            "test_type": "count",
             "values": {
                 "record_count": 8
             }
         },
         {
-            "test_name": "count_comparison",
+            "test_name": "Count Comparison",
             "test_category": "volumetrics",
+            "test_type": "count_comparison",
             "values": {
                 "dataframe_1_record_count": 8,
                 "dataframe_2_record_count": 6,
@@ -527,8 +659,9 @@
             }
         },
         {
-            "test_name": "summary",
+            "test_name": "Summary",
             "test_category": "volumetrics",
+            "test_type": "summary",
             "values": {
                 "numerical_summary": {
                     "amount": {
@@ -563,8 +696,9 @@
             }
         },
         {
-            "test_name": "identifier_comparison",
+            "test_name": "Identifier Comparison",
             "test_category": "volumetrics",
+            "test_type": "identifier_comparison",
             "values": {
                 "identifiers_match": false,
                 "dataframe_1": {
@@ -576,10 +710,10 @@
                     "extra_identifiers": {
                         "total": 4,
                         "breakdown": {
-                            "4": 1,
-                            "5": 1,
                             "7": 1,
-                            "6": 1
+                            "6": 1,
+                            "4": 1,
+                            "5": 1
                         }
                     }
                 },
@@ -592,8 +726,8 @@
                     "extra_identifiers": {
                         "total": 2,
                         "breakdown": {
-                            "12": 1,
-                            "11": 1
+                            "11": 1,
+                            "12": 1
                         }
                     }
                 }
