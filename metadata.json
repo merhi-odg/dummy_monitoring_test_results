@@ -1,0 +1,9 @@
+{
+    "tags": [],
+    "name": "Dummy model with fixed Test Results",
+    "description": "Model to output Sample Test Results",
+    "modelCategory": "MODEL_MONITORING_MODEL",
+    "createdBy": "ModelOp",
+    "lastModifiedBy": "ModelOp",
+    "custom" : {}
+}
