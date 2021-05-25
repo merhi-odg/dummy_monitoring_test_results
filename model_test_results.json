@@ -1,8 +1,8 @@
 {
     "f1_score": 0.6667,
     "MAE": 0.375,
-    "female_precision_disparity": 1.5,
-    "female_precision": 0.75,
+    "female_precision_disparity": 1.0,
+    "female_precision": 0.6667,
     "num_cards_js": 0.0405,
     "amount_ks_p_value": 0.6374,
     "label_es_p_value": 1.0,
@@ -39,6 +39,7 @@
             "test_category": "interpretability",
             "test_type": "shap",
             "metric": "feature_importance",
+            "test_id": "interpretability_shap_feature_importance",
             "values": {
                 "amount": 3.252,
                 "num_cards": 2.340,
@@ -48,8 +49,9 @@
         {
             "test_name": "LIME",
             "test_category": "interpretability",
-            "test_type": "LIME",
+            "test_type": "lime",
             "metric": "feature_importance",
+            "test_id": "interpretability_lime_feature_importance",
             "values": {
                 "amount": 3.152,
                 "num_cards": 2.140,
@@ -63,6 +65,7 @@
             "test_category": "bias",
             "test_type": "bias",
             "protected_class": "race",
+            "test_id": "bias_bias_race",
             "reference_group": "caucasian",
             "thresholds": {
                 "min": 0.8,
@@ -118,6 +121,7 @@
             "test_category": "bias",
             "test_type": "group",
             "protected_class": "race",
+            "test_id": "bias_group_race",
             "reference_group": null,
             "values": [
                 {
@@ -172,6 +176,7 @@
             "test_category": "bias",
             "test_type": "bias",
             "protected_class": "gender",
+            "test_id": "bias_bias_gender",
             "reference_group": "male",
             "thresholds": {
                 "min": 0.8,
@@ -181,14 +186,14 @@
                 {
                     "attribute_name": "gender",
                     "attribute_value": "female",
-                    "ppr_disparity": 2.0,
-                    "pprev_disparity": 2.0,
-                    "precision_disparity": 1.5,
-                    "fdr_disparity": 0.5,
+                    "ppr_disparity": 1.0,
+                    "pprev_disparity": 1.3333,
+                    "precision_disparity": 1.0,
+                    "fdr_disparity": 1.0,
                     "for_disparity": 0.8333,
                     "fpr_disparity": 1.3333,
-                    "fnr_disparity": 0.375,
-                    "tpr_disparity": 2.25,
+                    "fnr_disparity": 0.6667,
+                    "tpr_disparity": 1.3333,
                     "tnr_disparity": 0.8889,
                     "npv_disparity": 1.1111
                 },
@@ -213,37 +218,38 @@
             "test_category": "bias",
             "test_type": "group",
             "protected_class": "gender",
+            "test_id": "bias_group_gender",
             "reference_group": null,
             "values": [
                 {
                     "attribute_name": "gender",
                     "attribute_value": "female",
-                    "tpr": 0.75,
+                    "tpr": 0.6667,
                     "tnr": 0.6667,
                     "for": 0.3333,
-                    "fdr": 0.25,
+                    "fdr": 0.3333,
                     "fpr": 0.3333,
-                    "fnr": 0.25,
+                    "fnr": 0.3333,
                     "npv": 0.6667,
-                    "precision": 0.75,
-                    "ppr": 0.6667,
-                    "pprev": 0.5714,
-                    "prev": 0.5714
+                    "precision": 0.6667,
+                    "ppr": 0.5,
+                    "pprev": 0.5,
+                    "prev": 0.5
                 },
                 {
                     "attribute_name": "gender",
                     "attribute_value": "male",
-                    "tpr": 0.3333,
+                    "tpr": 0.5,
                     "tnr": 0.75,
                     "for": 0.4,
-                    "fdr": 0.5,
+                    "fdr": 0.3333,
                     "fpr": 0.25,
-                    "fnr": 0.6667,
+                    "fnr": 0.5,
                     "npv": 0.6,
-                    "precision": 0.5,
-                    "ppr": 0.3333,
-                    "pprev": 0.2857,
-                    "prev": 0.4286
+                    "precision": 0.6667,
+                    "ppr": 0.5,
+                    "pprev": 0.375,
+                    "prev": 0.5
                 }
             ]
         }
@@ -253,6 +259,7 @@
             "test_name": "Classification Metrics",
             "test_category": "performance",
             "test_type": "classification_metrics",
+            "test_id": "performance_classification_metrics",
             "values": {
                 "accuracy": 0.625,
                 "precision": 0.6,
@@ -265,6 +272,7 @@
             "test_name": "Regression Metrics",
             "test_category": "performance",
             "test_type": "regression_metrics",
+            "test_id": "performance_regression_metrics",
             "values": {
                 "rmse": 0.6124,
                 "mae": 0.375,
@@ -276,8 +284,9 @@
         {
             "test_name": "Jensen-Shannon",
             "test_category": "data_drift",
-            "test_type": "jensen-shannon",
+            "test_type": "jensen_shannon",
             "metric": "distance",
+            "test_id": "data_drift_jensen_shannon_distance",
             "values": {
                 "ownership": 0.0892,
                 "amount": 0.073,
@@ -287,8 +296,9 @@
         {
             "test_name": "Kolmogorov-Smirnov",
             "test_category": "data_drift",
-            "test_type": "kolmogorov-smirnov",
-            "metric": "p-value",
+            "test_type": "kolmogorov_smirnov",
+            "metric": "p_value",
+            "test_id": "data_drift_kolmogorov_smirnov_p_value",
             "values": {
                 "amount": 0.6374,
                 "num_cards": 1.0
@@ -297,18 +307,42 @@
         {
             "test_name": "Epps-Singleton",
             "test_category": "data_drift",
-            "test_type": "epps-singleton",
-            "metric": "p-value",
+            "test_type": "epps_singleton",
+            "metric": "p_value",
+            "test_id": "data_drift_epps_singleton_p_value",
             "values": {
                 "amount": 0.8544,
                 "num_cards": 0.9244
             }
         },
         {
+            "test_name": "Kolmogorov-Smirnov",
+            "test_category": "data_drift",
+            "test_type": "kolmogorov_smirnov",
+            "metric": "statistic",
+            "test_id": "data_drift_kolmogorov_smirnov_statistic",
+            "values": {
+                "amount": 0.375,
+                "num_cards": 0.125
+            }
+        },
+        {
+            "test_name": "Epps-Singleton",
+            "test_category": "data_drift",
+            "test_type": "epps_singleton",
+            "metric": "statistic",
+            "test_id": "data_drift_epps_singleton_statistic",
+            "values": {
+                "amount": 1.3407,
+                "num_cards": 0.9009
+            }
+        },
+        {
             "test_name": "Summary",
             "test_category": "data_drift",
             "test_type": "summary",
-            "metric": "pandas.describe()",
+            "metric": "pandas_describe",
+            "test_id": "data_drift_summary_pandas_describe",
             "values": {
                 "numerical_comparisons": {
                     "amount": {
@@ -373,23 +407,37 @@
                     }
                 }
             }
+        },
+        {
+            "test_name": "Kullback-Leibler",
+            "test_category": "data_drift",
+            "test_type": "kullback_leibler",
+            "metric": "divergence",
+            "test_id": "data_drift_kullback_leibler_divergence",
+            "values": {
+                "amount": 0.6059,
+                "num_cards": 0.1525,
+                "ownership": 0.0316
+            }
         }
     ],
     "concept_drift": [
         {
             "test_name": "Jensen-Shannon",
             "test_category": "concept_drift",
-            "test_type": "jensen-shannon",
+            "test_type": "jensen_shannon",
             "metric": "distance",
+            "test_id": "concept_drift_jensen_shannon_distance",
             "values": {
-                "label": 0.0
+                "label": 0.0166
             }
         },
         {
             "test_name": "Kolmogorov-Smirnov",
             "test_category": "concept_drift",
-            "test_type": "kolmogorov-smirnov",
-            "metric": "p-value",
+            "test_type": "kolmogorov_smirnov",
+            "metric": "p_value",
+            "test_id": "concept_drift_kolmogorov_smirnov_p_value",
             "values": {
                 "label": 1.0
             }
@@ -397,20 +445,41 @@
         {
             "test_name": "Epps-Singleton",
             "test_category": "concept_drift",
-            "test_type": "epps-singleton",
-            "metric": "p-value",
+            "test_type": "epps_singleton",
+            "metric": "p_value",
+            "test_id": "concept_drift_epps_singleton_p_value",
             "values": {
                 "label": 1.0
+            }
+        },
+        {
+            "test_name": "Kolmogorov-Smirnov",
+            "test_category": "concept_drift",
+            "test_type": "kolmogorov_smirnov",
+            "metric": "statistic",
+            "test_id": "concept_drift_kolmogorov_smirnov_statistic",
+            "values": {
+                "label": 0.0
+            }
+        },
+        {
+            "test_name": "Epps-Singleton",
+            "test_category": "concept_drift",
+            "test_type": "epps_singleton",
+            "metric": "statistic",
+            "test_id": "concept_drift_epps_singleton_statistic",
+            "values": {
+                "label": 0.0
             }
         },
         {
             "test_name": "Summary",
             "test_category": "concept_drift",
             "test_type": "summary",
-            "metric": "pandas.describe()",
+            "metric": "pandas_describe",
+            "test_id": "concept_drift_summary_pandas_describe",
             "values": {
-                "numerical_comparisons": {},
-                "categorical_comparisons": {
+                "numerical_comparisons": {
                     "label": {
                         "baseline": {
                             "count": 8.0,
@@ -433,7 +502,18 @@
                             "max": 1.0
                         }
                     }
-                }
+                },
+                "categorical_comparisons": {}
+            }
+        },
+        {
+            "test_name": "Kullback-Leibler",
+            "test_category": "concept_drift",
+            "test_type": "kullback_leibler",
+            "metric": "divergence",
+            "test_id": "concept_drift_kullback_leibler_divergence",
+            "values": {
+                "label": 0.0
             }
         }
     ],
@@ -442,6 +522,7 @@
             "test_name": "Stability Analysis",
             "test_category": "stability",
             "test_type": "stability_analysis",
+            "test_id": "stability_stability_analysis",
             "values": {
                 "amount": {
                     "stability_analysis_table": [
@@ -644,6 +725,7 @@
             "test_name": "Count",
             "test_category": "volumetrics",
             "test_type": "count",
+            "test_id": "volumetrics_count",
             "values": {
                 "record_count": 8
             }
@@ -652,6 +734,7 @@
             "test_name": "Count Comparison",
             "test_category": "volumetrics",
             "test_type": "count_comparison",
+            "test_id": "volumetrics_count_comparison",
             "values": {
                 "dataframe_1_record_count": 8,
                 "dataframe_2_record_count": 6,
@@ -662,6 +745,7 @@
             "test_name": "Summary",
             "test_category": "volumetrics",
             "test_type": "summary",
+            "test_id": "volumetrics_summary",
             "values": {
                 "numerical_summary": {
                     "amount": {
@@ -699,6 +783,7 @@
             "test_name": "Identifier Comparison",
             "test_category": "volumetrics",
             "test_type": "identifier_comparison",
+            "test_id": "volumetrics_identifier_comparison",
             "values": {
                 "identifiers_match": false,
                 "dataframe_1": {
@@ -710,10 +795,10 @@
                     "extra_identifiers": {
                         "total": 4,
                         "breakdown": {
-                            "7": 1,
-                            "6": 1,
                             "4": 1,
-                            "5": 1
+                            "6": 1,
+                            "5": 1,
+                            "7": 1
                         }
                     }
                 },
@@ -726,8 +811,8 @@
                     "extra_identifiers": {
                         "total": 2,
                         "breakdown": {
-                            "11": 1,
-                            "12": 1
+                            "12": 1,
+                            "11": 1
                         }
                     }
                 }
