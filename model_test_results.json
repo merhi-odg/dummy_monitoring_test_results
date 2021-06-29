@@ -40,10 +40,26 @@
             "test_type": "shap",
             "metric": "feature_importance",
             "test_id": "interpretability_shap_feature_importance",
-            "values": {
-                "amount": 3.252,
-                "num_cards": 2.340,
-                "ownership": 1.636
+            "values": {           
+                "duration_months": 0.1,
+                "credit_amount": 2.2,
+                "installment_rate": 3.3,
+                "present_residence_since": 0.4,
+                "age_years": 0.05,
+                "number_existing_credits": 0.15,
+                "checking_status": 0.25,
+                "credit_history": 0.35,
+                "purpose": 1.45,
+                "savings_account": 0.08,
+                "present_employment_since": 0.18,
+                "debtors_guarantors": 2.28,
+                "property": 0.38,
+                "installment_plans": 3.48,
+                "housing": 0.1,
+                "job": 5.2,
+                "number_people_liable": 0.3,
+                "telephone": 4.4,
+                "foreign_worker": 0.5
             }
         },
         {
