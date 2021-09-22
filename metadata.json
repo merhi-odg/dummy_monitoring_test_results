@@ -5,5 +5,93 @@
     "modelCategory": "BUSINESS_MODEL",
     "defaultAssociationRole": "METRICS_MODEL",
     "frequentlyUsed": true,
-    "custom" : {}
+    "custom": {
+        "Intended_Usage": "This model is to be used to demonstrate monitoring visualizations in MOC",
+        "Model_Approval_Status": "Approved",
+        "MRM_Approval_ID": "M79-8349832593485",
+        "Risk_Classification_ID": "M79-234835234598AM",
+        "Timeline": {
+            "Initial_Approval_Date": "2020-07-20",
+            "Validation_Expiration": "2021-01-20",
+            "Retire_Date": "2022-12-31"
+        },
+        "Monitoring": {
+            "Frequency": "Weekly",
+            "Monitors": [
+                "data_drift",
+                "concept_drift",
+                "bias",
+                "stability"
+            ],
+            "Protected_Classes": [
+                {
+                    "class": "gender",
+                    "reference_group": "male"
+                },
+                {
+                    "class": "race",
+                    "reference_group": "caucasian"
+                }
+            ]
+        },
+        "Model_Officers": {
+            "MRO": "Isaac Newton",
+            "MRM_COO": "Ada Lovelace",
+            "Model_Validation_Lead": "Marie Curie",
+            "Model_Validator": "Bertrand Russell"
+        },
+        "Model_Operators": {
+            "Data_Scientists": [
+                "Henri Poincare",
+                "Sophie Germain"
+            ],
+            "Business_Analysts": [
+                "Gottfried Leibniz",
+                "David Hilbert"
+            ],
+            "Group_Memberships": {
+                "Henri Poincare": [
+                    "Admin",
+                    "Read"
+                ],
+                "Sophie Germain": [
+                    "Read"
+                ],
+                "Gottfried Leibniz": [
+                    "Admin",
+                    "Read"
+                ],
+                "David Hilbert": [
+                    "Read"
+                ]
+            }
+        },
+        "Access_Levels": [
+            {
+                "Group": "Admin",
+                "Permissions": "Read/Write"
+            },
+            {
+                "Group": "Read",
+                "Permissions": "ReadOnly"
+            }
+        ],
+        "Model_Functions": [
+            {
+                "type": "score",
+                "deployment": "REST",
+                "frequency": "on-demand"
+            },
+            {
+                "type": "metrics",
+                "deployment": "batch",
+                "frequency": "weekly"
+            },
+            {
+                "type": "train",
+                "deployment": "batch",
+                "frequency": "monthly"
+            }
+        ]
+    }
 }
