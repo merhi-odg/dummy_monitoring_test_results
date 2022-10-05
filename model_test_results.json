@@ -1,36 +1,886 @@
-{
-    "f1_score": 0.6667,
-    "MAE": 0.375,
-    "female_precision_disparity": 1.0,
-    "female_precision": 0.6667,
-    "num_cards_js": 0.0405,
-    "amount_ks_p_value": 0.6374,
-    "label_es_p_value": 1.0,
-    "amount_stability_index": 1.0184833912404931,
-    "num_cards_stability_ks": 0.20833333333333326,
-    "record_count": 8,
+{   
+    "DataDrift_maxJensen-ShannonDistance": 0.1362,
+    "DataDrift_maxJensen-ShannonDistanceFeature": "amount",
+    "DataDrift_minJensen-ShannonDistance": 0.0694,
+    "DataDrift_minJensen-ShannonDistanceFeature": "gender",
+    "DataDrift_maxKolmogorov-SmirnovPValue": 0.9888,
+    "DataDrift_maxKolmogorov-SmirnovPValueFeature": "num_cards",
+    "DataDrift_minKolmogorov-SmirnovPValue": 0.2701,
+    "DataDrift_minKolmogorov-SmirnovPValueFeature": "amount",
+    "DataDrift_maxEpps-SingletonPValue": 0.8178,
+    "DataDrift_maxEpps-SingletonPValueFeature": "num_cards",
+    "DataDrift_minEpps-SingletonPValue": 0.7513,
+    "DataDrift_minEpps-SingletonPValueFeature": "amount",
+    "DataDrift_maxKolmogorov-SmirnovStatistic": 0.4603,
+    "DataDrift_maxKolmogorov-SmirnovStatisticFeature": "amount",
+    "DataDrift_minKolmogorov-SmirnovStatistic": 0.1905,
+    "DataDrift_minKolmogorov-SmirnovStatisticFeature": "num_cards",
+    "DataDrift_maxEpps-SingletonStatistic": 1.9156,
+    "DataDrift_maxEpps-SingletonStatisticFeature": "amount",
+    "DataDrift_minEpps-SingletonStatistic": 1.5497,
+    "DataDrift_minEpps-SingletonStatisticFeature": "num_cards",
+    "DataDrift_maxKullback-LeiblerDivergence": 0.7464,
+    "DataDrift_maxKullback-LeiblerDivergenceFeature": "amount",
+    "DataDrift_minKullback-LeiblerDivergence": 0.019,
+    "DataDrift_minKullback-LeiblerDivergenceFeature": "gender",
+    "DataDrift_maxWassersteinDistance": 19.6032,
+    "DataDrift_maxWassersteinDistanceFeature": "amount",
+    "DataDrift_minWassersteinDistance": 1.0159,
+    "DataDrift_minWassersteinDistanceFeature": "num_cards",
+    "data_drift": [
+        {
+            "test_name": "Jensen-Shannon",
+            "test_category": "data_drift",
+            "test_type": "jensen_shannon",
+            "metric": "distance",
+            "test_id": "data_drift_jensen_shannon_distance",
+            "values": {
+                "amount": 0.1362,
+                "num_cards": 0.1088,
+                "gender": 0.0694
+            }
+        },
+        {
+            "test_name": "Kolmogorov-Smirnov",
+            "test_category": "data_drift",
+            "test_type": "kolmogorov_smirnov",
+            "metric": "p_value",
+            "test_id": "data_drift_kolmogorov_smirnov_p_value",
+            "values": {
+                "amount": 0.2701,
+                "num_cards": 0.9888
+            }
+        },
+        {
+            "test_name": "Epps-Singleton",
+            "test_category": "data_drift",
+            "test_type": "epps_singleton",
+            "metric": "p_value",
+            "test_id": "data_drift_epps_singleton_p_value",
+            "values": {
+                "amount": 0.7513,
+                "num_cards": 0.8178
+            }
+        },
+        {
+            "test_name": "Kolmogorov-Smirnov",
+            "test_category": "data_drift",
+            "test_type": "kolmogorov_smirnov",
+            "metric": "statistic",
+            "test_id": "data_drift_kolmogorov_smirnov_statistic",
+            "values": {
+                "amount": 0.4603,
+                "num_cards": 0.1905
+            }
+        },
+        {
+            "test_name": "Epps-Singleton",
+            "test_category": "data_drift",
+            "test_type": "epps_singleton",
+            "metric": "statistic",
+            "test_id": "data_drift_epps_singleton_statistic",
+            "values": {
+                "amount": 1.9156,
+                "num_cards": 1.5497
+            }
+        },
+        {
+            "test_name": "Summary",
+            "test_category": "data_drift",
+            "test_type": "summary",
+            "metric": "pandas_describe",
+            "test_id": "data_drift_summary_pandas_describe",
+            "values": {
+                "numerical_comparisons": {
+                    "amount": {
+                        "baseline": {
+                            "count": 9.0,
+                            "mean": 156.1111,
+                            "std": 31.9939,
+                            "min": 100.0,
+                            "25%": 130.0,
+                            "50%": 175.0,
+                            "75%": 175.0,
+                            "max": 200.0
+                        },
+                        "sample": {
+                            "count": 7.0,
+                            "mean": 175.7143,
+                            "std": 28.3473,
+                            "min": 125.0,
+                            "25%": 162.5,
+                            "50%": 190.0,
+                            "75%": 195.0,
+                            "max": 200.0
+                        }
+                    },
+                    "num_cards": {
+                        "baseline": {
+                            "count": 9.0,
+                            "mean": 3.7778,
+                            "std": 3.1136,
+                            "min": 0.0,
+                            "25%": 1.0,
+                            "50%": 3.0,
+                            "75%": 6.0,
+                            "max": 9.0
+                        },
+                        "sample": {
+                            "count": 7.0,
+                            "mean": 3.1429,
+                            "std": 2.5448,
+                            "min": 1.0,
+                            "25%": 1.5,
+                            "50%": 2.0,
+                            "75%": 4.0,
+                            "max": 8.0
+                        }
+                    }
+                },
+                "categorical_comparisons": {
+                    "gender": {
+                        "baseline": {
+                            "count": 9,
+                            "unique": 2,
+                            "top": "male",
+                            "freq": 6
+                        },
+                        "sample": {
+                            "count": 7,
+                            "unique": 2,
+                            "top": "male",
+                            "freq": 4
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "test_name": "Kullback-Leibler",
+            "test_category": "data_drift",
+            "test_type": "kullback_leibler",
+            "metric": "divergence",
+            "test_id": "data_drift_kullback_leibler_divergence",
+            "values": {
+                "amount": 0.7464,
+                "num_cards": 0.3092,
+                "gender": 0.019
+            }
+        },
+        {
+            "test_name": "Wasserstein",
+            "test_category": "data_drift",
+            "test_type": "wasserstein",
+            "metric": "distance",
+            "test_id": "data_drift_wasserstein_distance",
+            "values": {
+                "amount": 19.6032,
+                "num_cards": 1.0159
+            }
+        }
+    ],
+    "ConceptDrift_maxJensen-ShannonDistanceValue": 0.0899,
+    "ConceptDrift_maxJensen-ShannonDistanceValueFeature": "label",
+    "ConceptDrift_minJensen-ShannonDistanceValue": 0.0899,
+    "ConceptDrift_minJensen-ShannonDistanceValueFeature": "label",
+    "ConceptDrift_maxKolmogorov-SmirnovPValueValue": 1.0,
+    "ConceptDrift_maxKolmogorov-SmirnovPValueValueFeature": "label",
+    "ConceptDrift_minKolmogorov-SmirnovPValueValue": 1.0,
+    "ConceptDrift_minKolmogorov-SmirnovPValueValueFeature": "label",
+    "ConceptDrift_maxEpps-SingletonPValueValue": null,
+    "ConceptDrift_maxEpps-SingletonPValueValueFeature": "label",
+    "ConceptDrift_minEpps-SingletonPValueValue": null,
+    "ConceptDrift_minEpps-SingletonPValueValueFeature": "label",
+    "ConceptDrift_maxKolmogorov-SmirnovStatisticValue": 0.127,
+    "ConceptDrift_maxKolmogorov-SmirnovStatisticValueFeature": "label",
+    "ConceptDrift_minKolmogorov-SmirnovStatisticValue": 0.127,
+    "ConceptDrift_minKolmogorov-SmirnovStatisticValueFeature": "label",
+    "ConceptDrift_maxEpps-SingletonStatisticValue": null,
+    "ConceptDrift_maxEpps-SingletonStatisticValueFeature": "label",
+    "ConceptDrift_minEpps-SingletonStatisticValue": null,
+    "ConceptDrift_minEpps-SingletonStatisticValueFeature": "label",
+    "ConceptDrift_maxKullback-LeiblerDivergenceValue": 0.0325,
+    "ConceptDrift_maxKullback-LeiblerDivergenceValueFeature": "label",
+    "ConceptDrift_minKullback-LeiblerDivergenceValue": 0.0325,
+    "ConceptDrift_minKullback-LeiblerDivergenceValueFeature": "label",
+    "ConceptDrift_maxWassersteinDistanceValue": 0.127,
+    "ConceptDrift_maxWassersteinDistanceValueFeature": "label",
+    "ConceptDrift_minWassersteinDistanceValue": 0.127,
+    "ConceptDrift_minWassersteinDistanceValueFeature": "label",
+    "concept_drift": [
+        {
+            "test_name": "Jensen-Shannon",
+            "test_category": "concept_drift",
+            "test_type": "jensen_shannon",
+            "metric": "distance",
+            "test_id": "concept_drift_jensen_shannon_distance",
+            "values": {
+                "label": 0.0899
+            }
+        },
+        {
+            "test_name": "Kolmogorov-Smirnov",
+            "test_category": "concept_drift",
+            "test_type": "kolmogorov_smirnov",
+            "metric": "p_value",
+            "test_id": "concept_drift_kolmogorov_smirnov_p_value",
+            "values": {
+                "label": 1.0
+            }
+        },
+        {
+            "test_name": "Epps-Singleton",
+            "test_category": "concept_drift",
+            "test_type": "epps_singleton",
+            "metric": "p_value",
+            "test_id": "concept_drift_epps_singleton_p_value",
+            "values": {
+                "label": null
+            }
+        },
+        {
+            "test_name": "Kolmogorov-Smirnov",
+            "test_category": "concept_drift",
+            "test_type": "kolmogorov_smirnov",
+            "metric": "statistic",
+            "test_id": "concept_drift_kolmogorov_smirnov_statistic",
+            "values": {
+                "label": 0.127
+            }
+        },
+        {
+            "test_name": "Epps-Singleton",
+            "test_category": "concept_drift",
+            "test_type": "epps_singleton",
+            "metric": "statistic",
+            "test_id": "concept_drift_epps_singleton_statistic",
+            "values": {
+                "label": null
+            }
+        },
+        {
+            "test_name": "Summary",
+            "test_category": "concept_drift",
+            "test_type": "summary",
+            "metric": "pandas_describe",
+            "test_id": "concept_drift_summary_pandas_describe",
+            "values": {
+                "numerical_comparisons": {},
+                "categorical_comparisons": {
+                    "label": {
+                        "baseline": {
+                            "count": 9,
+                            "unique": 2,
+                            "top": 1,
+                            "freq": 5
+                        },
+                        "sample": {
+                            "count": 7,
+                            "unique": 2,
+                            "top": 0,
+                            "freq": 4
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "test_name": "Kullback-Leibler",
+            "test_category": "concept_drift",
+            "test_type": "kullback_leibler",
+            "metric": "divergence",
+            "test_id": "concept_drift_kullback_leibler_divergence",
+            "values": {
+                "label": 0.0325
+            }
+        },
+        {
+            "test_name": "Wasserstein",
+            "test_category": "concept_drift",
+            "test_type": "wasserstein",
+            "metric": "distance",
+            "test_id": "concept_drift_wasserstein_distance",
+            "values": {
+                "label": 0.127
+            }
+        }
+    ],
+    "gender_female_statistical_parity": 0.6,
+    "gender_female_impact_parity": 1.0,
+    "gender_male_statistical_parity": 1.0,
+    "gender_male_impact_parity": 1.0,
+    "race_african-american_statistical_parity": 1.0,
+    "race_african-american_impact_parity": 1.4,
+    "race_asian_statistical_parity": 0.6667,
+    "race_asian_impact_parity": 1.1667,
+    "race_caucasian_statistical_parity": 1.0,
+    "race_caucasian_impact_parity": 1.0,
+    "Bias_maxPPRDisparityValue": 1.0,
+    "Bias_maxPPRDisparityValueFeature": "gender_male_statistical_parity",
+    "Bias_minPPRDisparityValue": 0.6,
+    "Bias_minPPRDisparityValueFeature": "gender_female_statistical_parity",
+    "bias": [
+        {
+            "test_name": "Aequitas Bias",
+            "test_category": "bias",
+            "test_type": "bias",
+            "protected_class": "gender",
+            "test_id": "bias_bias_gender",
+            "reference_group": "male",
+            "thresholds": {
+                "min": 0.8,
+                "max": 1.25
+            },
+            "values": [
+                {
+                    "attribute_name": "gender",
+                    "attribute_value": "female",
+                    "ppr_disparity": 0.6,
+                    "pprev_disparity": 1.0,
+                    "precision_disparity": 1.1111,
+                    "fdr_disparity": 0.8333,
+                    "for_disparity": 0.8333,
+                    "fpr_disparity": 0.8333,
+                    "fnr_disparity": 0.8333,
+                    "tpr_disparity": 1.1111,
+                    "tnr_disparity": 1.1111,
+                    "npv_disparity": 1.1111
+                },
+                {
+                    "attribute_name": "gender",
+                    "attribute_value": "male",
+                    "ppr_disparity": 1.0,
+                    "pprev_disparity": 1.0,
+                    "precision_disparity": 1.0,
+                    "fdr_disparity": 1.0,
+                    "for_disparity": 1.0,
+                    "fpr_disparity": 1.0,
+                    "fnr_disparity": 1.0,
+                    "tpr_disparity": 1.0,
+                    "tnr_disparity": 1.0,
+                    "npv_disparity": 1.0
+                }
+            ]
+        },
+        {
+            "test_name": "Aequitas Bias",
+            "test_category": "bias",
+            "test_type": "bias",
+            "protected_class": "race",
+            "test_id": "bias_bias_race",
+            "reference_group": "caucasian",
+            "thresholds": {
+                "min": 0.8,
+                "max": 1.25
+            },
+            "values": [
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "african-american",
+                    "ppr_disparity": 1.0,
+                    "pprev_disparity": 1.4,
+                    "precision_disparity": 0.6667,
+                    "fdr_disparity": 10.0,
+                    "for_disparity": 2.0,
+                    "fpr_disparity": 10.0,
+                    "fnr_disparity": 1.3333,
+                    "tpr_disparity": 0.8889,
+                    "tnr_disparity": 0.5,
+                    "npv_disparity": 0.6667
+                },
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "asian",
+                    "ppr_disparity": 0.6667,
+                    "pprev_disparity": 1.1667,
+                    "precision_disparity": 0.0,
+                    "fdr_disparity": 10.0,
+                    "for_disparity": 2.0,
+                    "fpr_disparity": 10.0,
+                    "fnr_disparity": 4.0,
+                    "tpr_disparity": 0.0,
+                    "tnr_disparity": 0.3333,
+                    "npv_disparity": 0.6667
+                },
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "caucasian",
+                    "ppr_disparity": 1.0,
+                    "pprev_disparity": 1.0,
+                    "precision_disparity": 1.0,
+                    "fdr_disparity": null,
+                    "for_disparity": 1.0,
+                    "fpr_disparity": null,
+                    "fnr_disparity": 1.0,
+                    "tpr_disparity": 1.0,
+                    "tnr_disparity": 1.0,
+                    "npv_disparity": 1.0
+                }
+            ]
+        },
+        {
+            "test_name": "Aequitas Group",
+            "test_category": "bias",
+            "test_type": "group",
+            "protected_class": "gender",
+            "test_id": "bias_group_gender",
+            "reference_group": null,
+            "values": [
+                {
+                    "attribute_name": "gender",
+                    "attribute_value": "female",
+                    "tpr": 0.6667,
+                    "tnr": 0.6667,
+                    "for": 0.3333,
+                    "fdr": 0.3333,
+                    "fpr": 0.3333,
+                    "fnr": 0.3333,
+                    "npv": 0.6667,
+                    "precision": 0.6667,
+                    "ppr": 0.375,
+                    "pprev": 0.5,
+                    "prev": 0.5
+                },
+                {
+                    "attribute_name": "gender",
+                    "attribute_value": "male",
+                    "tpr": 0.6,
+                    "tnr": 0.6,
+                    "for": 0.4,
+                    "fdr": 0.4,
+                    "fpr": 0.4,
+                    "fnr": 0.4,
+                    "npv": 0.6,
+                    "precision": 0.6,
+                    "ppr": 0.625,
+                    "pprev": 0.5,
+                    "prev": 0.5
+                }
+            ]
+        },
+        {
+            "test_name": "Aequitas Group",
+            "test_category": "bias",
+            "test_type": "group",
+            "protected_class": "race",
+            "test_id": "bias_group_race",
+            "reference_group": null,
+            "values": [
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "african-american",
+                    "tpr": 0.6667,
+                    "tnr": 0.5,
+                    "for": 0.5,
+                    "fdr": 0.3333,
+                    "fpr": 0.5,
+                    "fnr": 0.3333,
+                    "npv": 0.5,
+                    "precision": 0.6667,
+                    "ppr": 0.375,
+                    "pprev": 0.6,
+                    "prev": 0.6
+                },
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "asian",
+                    "tpr": 0.0,
+                    "tnr": 0.3333,
+                    "for": 0.5,
+                    "fdr": 1.0,
+                    "fpr": 0.6667,
+                    "fnr": 1.0,
+                    "npv": 0.5,
+                    "precision": 0.0,
+                    "ppr": 0.25,
+                    "pprev": 0.5,
+                    "prev": 0.25
+                },
+                {
+                    "attribute_name": "race",
+                    "attribute_value": "caucasian",
+                    "tpr": 0.75,
+                    "tnr": 1.0,
+                    "for": 0.25,
+                    "fdr": 0.0,
+                    "fpr": 0.0,
+                    "fnr": 0.25,
+                    "npv": 0.75,
+                    "precision": 1.0,
+                    "ppr": 0.375,
+                    "pprev": 0.4286,
+                    "prev": 0.5714
+                }
+            ]
+        }
+    ],
+    "accuracy": 0.6667,
+    "precision": 0.6667,
+    "recall": 0.8,
+    "auc": 0.65,
+    "f1_score": 0.7273,
+    "confusion_matrix": [
+        {
+            "0": 0.2222,
+            "1": 0.2222
+        },
+        {
+            "0": 0.1111,
+            "1": 0.4444
+        }
+    ],
+    "rmse": 0.5774,
+    "mae": 0.3333,
+    "r2_score": -0.35,
+    "performance": [
+        {
+            "test_name": "Classification Metrics",
+            "test_category": "performance",
+            "test_type": "classification_metrics",
+            "test_id": "performance_classification_metrics",
+            "values": {
+                "accuracy": 0.6667,
+                "precision": 0.6667,
+                "recall": 0.8,
+                "f1_score": 0.7273,
+                "auc": 0.65,
+                "confusion_matrix": [
+                    {
+                        "0": 0.2222,
+                        "1": 0.2222
+                    },
+                    {
+                        "0": 0.1111,
+                        "1": 0.4444
+                    }
+                ]
+            }
+        },
+        {
+            "test_name": "Regression Metrics",
+            "test_category": "performance",
+            "test_type": "regression_metrics",
+            "test_id": "performance_regression_metrics",
+            "values": {
+                "rmse": 0.5774,
+                "mae": 0.3333,
+                "r2_score": -0.35
+            }
+        }
+    ],
+    "record_count": 9,
     "record_count_difference": 2,
     "identifiers_match": false,
-    "roc": [
+    "volumetrics": [
         {
-            "fpr": 0,
-            "tpr": 0
+            "test_name": "Count",
+            "test_category": "volumetrics",
+            "test_type": "count",
+            "test_id": "volumetrics_count",
+            "values": {
+                "record_count": 9
+            }
         },
         {
-            "fpr": 0.25,
-            "tpr": 0.3
+            "test_name": "Count Comparison",
+            "test_category": "volumetrics",
+            "test_type": "count_comparison",
+            "test_id": "volumetrics_count_comparison",
+            "values": {
+                "dataframe_1_record_count": 9,
+                "dataframe_2_record_count": 7,
+                "record_count_difference": 2
+            }
         },
         {
-            "fpr": 0.5,
-            "tpr": 0.65
+            "test_name": "Summary",
+            "test_category": "volumetrics",
+            "test_type": "summary",
+            "test_id": "volumetrics_summary",
+            "values": {
+                "numerical_summary": {
+                    "amount": {
+                        "count": 9.0,
+                        "mean": 156.1111,
+                        "std": 31.9939,
+                        "min": 100.0,
+                        "25%": 130.0,
+                        "50%": 175.0,
+                        "75%": 175.0,
+                        "max": 200.0
+                    },
+                    "num_cards": {
+                        "count": 9.0,
+                        "mean": 3.7778,
+                        "std": 3.1136,
+                        "min": 0.0,
+                        "25%": 1.0,
+                        "50%": 3.0,
+                        "75%": 6.0,
+                        "max": 9.0
+                    }
+                },
+                "categorical_summary": {
+                    "ownership": {
+                        "count": 9,
+                        "unique": 2,
+                        "top": "own",
+                        "freq": 6
+                    }
+                }
+            }
         },
         {
-            "fpr": 0.75,
-            "tpr": 0.9
-        },
+            "test_name": "Identifier Comparison",
+            "test_category": "volumetrics",
+            "test_type": "identifier_comparison",
+            "test_id": "volumetrics_identifier_comparison",
+            "values": {
+                "identifiers_match": false,
+                "dataframe_1": {
+                    "identifier_columns": [
+                        "id"
+                    ],
+                    "record_count": 9,
+                    "unique_identifier_count": 9,
+                    "extra_identifiers": {
+                        "total": 5,
+                        "breakdown": {
+                            "4": 1,
+                            "5": 1,
+                            "6": 1,
+                            "7": 1,
+                            "8": 1
+                        }
+                    }
+                },
+                "dataframe_2": {
+                    "identifier_columns": [
+                        "id"
+                    ],
+                    "record_count": 7,
+                    "unique_identifier_count": 7,
+                    "extra_identifiers": {
+                        "total": 3,
+                        "breakdown": {
+                            "11": 1,
+                            "12": 1,
+                            "13": 1
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "CSI_maxCSIValue": 1.296161,
+    "CSI_maxCSIValueFeature": "amount_CSI",
+    "CSI_minCSIValue": 0.014769,
+    "CSI_minCSIValueFeature": "ownership_CSI",
+    "score_PSI": 0.970112,
+    "amount_CSI": 1.296161,
+    "ownership_CSI": 0.014769,
+    "num_cards_CSI": 0.56687,
+    "stability": [
         {
-            "fpr": 1,
-            "tpr": 1
+            "test_name": "Stability Analysis",
+            "test_category": "stability",
+            "test_type": "stability_analysis",
+            "test_id": "stability_stability_analysis",
+            "values": {
+                "amount": {
+                    "stability_analysis_table": [
+                        {
+                            "bucket": "100 125 ",
+                            "train_count": 3,
+                            "eval_count": 1,
+                            "train_percent": 0.230769,
+                            "eval_percent": 0.111111,
+                            "train_mean_score": 0.666667,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": -0.666667,
+                            "train_cum_percent": 0.230769,
+                            "eval_cum_percent": 0.111111,
+                            "ks_calc": 0.119658,
+                            "chisq_calc": 0.062045,
+                            "psi_calc": 0.087457
+                        },
+                        {
+                            "bucket": "175 ",
+                            "train_count": 6,
+                            "eval_count": 2,
+                            "train_percent": 0.461538,
+                            "eval_percent": 0.222222,
+                            "train_mean_score": 0.666667,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": -0.666667,
+                            "train_cum_percent": 0.692308,
+                            "eval_cum_percent": 0.333333,
+                            "ks_calc": 0.358974,
+                            "chisq_calc": 0.12409,
+                            "psi_calc": 0.174913
+                        },
+                        {
+                            "bucket": "(-inf, 150.0]",
+                            "train_count": 3,
+                            "eval_count": 1,
+                            "train_percent": 0.230769,
+                            "eval_percent": 0.111111,
+                            "train_mean_score": 1.0,
+                            "eval_mean_score": 1.0,
+                            "score_mean_diff": 0.0,
+                            "train_cum_percent": 0.923077,
+                            "eval_cum_percent": 0.444444,
+                            "ks_calc": 0.478632,
+                            "chisq_calc": 0.062045,
+                            "psi_calc": 0.087457
+                        },
+                        {
+                            "bucket": "(150.0, inf]",
+                            "train_count": 1,
+                            "eval_count": 5,
+                            "train_percent": 0.076923,
+                            "eval_percent": 0.555556,
+                            "train_mean_score": 0.0,
+                            "eval_mean_score": 0.2,
+                            "score_mean_diff": 0.2,
+                            "train_cum_percent": 1.0,
+                            "eval_cum_percent": 1.0,
+                            "ks_calc": 0.0,
+                            "chisq_calc": 2.978158,
+                            "psi_calc": 0.946334
+                        }
+                    ],
+                    "stability_index": 1.296161,
+                    "stability_chisq": 3.226338,
+                    "stability_ks": 0.478632
+                },
+                "ownership": {
+                    "stability_analysis_table": [
+                        {
+                            "bucket": "own",
+                            "train_count": 8,
+                            "eval_count": 5,
+                            "train_percent": 0.615385,
+                            "eval_percent": 0.555556,
+                            "train_mean_score": 0.625,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": -0.625,
+                            "train_cum_percent": 0.615385,
+                            "eval_cum_percent": 0.555556,
+                            "ks_calc": 0.059829,
+                            "chisq_calc": 0.005817,
+                            "psi_calc": 0.006119
+                        },
+                        {
+                            "bucket": "rent",
+                            "train_count": 5,
+                            "eval_count": 4,
+                            "train_percent": 0.384615,
+                            "eval_percent": 0.444444,
+                            "train_mean_score": 0.8,
+                            "eval_mean_score": 0.5,
+                            "score_mean_diff": -0.3,
+                            "train_cum_percent": 1.0,
+                            "eval_cum_percent": 1.0,
+                            "ks_calc": 0.0,
+                            "chisq_calc": 0.009307,
+                            "psi_calc": 0.00865
+                        }
+                    ],
+                    "stability_index": 0.014769,
+                    "stability_chisq": 0.015124,
+                    "stability_ks": 0.059829
+                },
+                "num_cards": {
+                    "stability_analysis_table": [
+                        {
+                            "bucket": "(-inf, 1.0]",
+                            "train_count": 5,
+                            "eval_count": 2,
+                            "train_percent": 0.384615,
+                            "eval_percent": 0.222222,
+                            "train_mean_score": 0.8,
+                            "eval_mean_score": 0.5,
+                            "score_mean_diff": -0.3,
+                            "train_cum_percent": 0.384615,
+                            "eval_cum_percent": 0.222222,
+                            "ks_calc": 0.162393,
+                            "chisq_calc": 0.068566,
+                            "psi_calc": 0.089083
+                        },
+                        {
+                            "bucket": "(1.0, 6.0]",
+                            "train_count": 4,
+                            "eval_count": 6,
+                            "train_percent": 0.307692,
+                            "eval_percent": 0.666667,
+                            "train_mean_score": 0.75,
+                            "eval_mean_score": 0.166667,
+                            "score_mean_diff": -0.583333,
+                            "train_cum_percent": 0.692308,
+                            "eval_cum_percent": 0.888889,
+                            "ks_calc": 0.196581,
+                            "chisq_calc": 0.418803,
+                            "psi_calc": 0.277555
+                        },
+                        {
+                            "bucket": "(6.0, inf]",
+                            "train_count": 4,
+                            "eval_count": 1,
+                            "train_percent": 0.307692,
+                            "eval_percent": 0.111111,
+                            "train_mean_score": 0.5,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": -0.5,
+                            "train_cum_percent": 1.0,
+                            "eval_cum_percent": 1.0,
+                            "ks_calc": 0.0,
+                            "chisq_calc": 0.125594,
+                            "psi_calc": 0.200232
+                        }
+                    ],
+                    "stability_index": 0.56687,
+                    "stability_chisq": 0.612963,
+                    "stability_ks": 0.196581
+                },
+                "score": {
+                    "stability_analysis_table": [
+                        {
+                            "bucket": "0",
+                            "train_count": 4,
+                            "eval_count": 7,
+                            "train_percent": 0.307692,
+                            "eval_percent": 0.777778,
+                            "train_mean_score": 0.0,
+                            "eval_mean_score": 0.0,
+                            "score_mean_diff": 0.0,
+                            "train_cum_percent": 0.307692,
+                            "eval_cum_percent": 0.777778,
+                            "ks_calc": 0.470085,
+                            "chisq_calc": 0.718186,
+                            "psi_calc": 0.435929
+                        },
+                        {
+                            "bucket": "1",
+                            "train_count": 9,
+                            "eval_count": 2,
+                            "train_percent": 0.692308,
+                            "eval_percent": 0.222222,
+                            "train_mean_score": 1.0,
+                            "eval_mean_score": 1.0,
+                            "score_mean_diff": 0.0,
+                            "train_cum_percent": 1.0,
+                            "eval_cum_percent": 1.0,
+                            "ks_calc": 0.0,
+                            "chisq_calc": 0.319194,
+                            "psi_calc": 0.534183
+                        }
+                    ],
+                    "stability_index": 0.970112,
+                    "stability_chisq": 1.03738,
+                    "stability_ks": 0.470085
+                }
+            }
         }
     ],
     "interpretability": [
@@ -75,764 +925,26 @@
             }
         }
     ],
-    "bias": [
+     "roc": [
         {
-            "test_name": "Aequitas Bias",
-            "test_category": "bias",
-            "test_type": "bias",
-            "protected_class": "race",
-            "test_id": "bias_bias_race",
-            "reference_group": "caucasian",
-            "thresholds": {
-                "min": 0.8,
-                "max": 1.2
-            },
-            "values": [
-                {
-                    "attribute_name": "race",
-                    "attribute_value": "african-american",
-                    "ppr_disparity": 0.3333,
-                    "pprev_disparity": 0.7778,
-                    "precision_disparity": 1.0,
-                    "fdr_disparity": null,
-                    "for_disparity": 2.0,
-                    "fpr_disparity": null,
-                    "fnr_disparity": 2.0,
-                    "tpr_disparity": 0.6667,
-                    "tnr_disparity": 1.0,
-                    "npv_disparity": 0.6667
-                },
-                {
-                    "attribute_name": "race",
-                    "attribute_value": "asian",
-                    "ppr_disparity": 0.6667,
-                    "pprev_disparity": 1.1667,
-                    "precision_disparity": 0.0,
-                    "fdr_disparity": 10.0,
-                    "for_disparity": 2.0,
-                    "fpr_disparity": 10.0,
-                    "fnr_disparity": 4.0,
-                    "tpr_disparity": 0.0,
-                    "tnr_disparity": 0.3333,
-                    "npv_disparity": 0.6667
-                },
-                {
-                    "attribute_name": "race",
-                    "attribute_value": "caucasian",
-                    "ppr_disparity": 1.0,
-                    "pprev_disparity": 1.0,
-                    "precision_disparity": 1.0,
-                    "fdr_disparity": null,
-                    "for_disparity": 1.0,
-                    "fpr_disparity": null,
-                    "fnr_disparity": 1.0,
-                    "tpr_disparity": 1.0,
-                    "tnr_disparity": 1.0,
-                    "npv_disparity": 1.0
-                }
-            ]
+            "fpr": 0,
+            "tpr": 0
         },
         {
-            "test_name": "Aequitas Group",
-            "test_category": "bias",
-            "test_type": "group",
-            "protected_class": "race",
-            "test_id": "bias_group_race",
-            "reference_group": null,
-            "values": [
-                {
-                    "attribute_name": "race",
-                    "attribute_value": "african-american",
-                    "tpr": 0.5,
-                    "tnr": 1.0,
-                    "for": 0.5,
-                    "fdr": 0.0,
-                    "fpr": 0.0,
-                    "fnr": 0.5,
-                    "npv": 0.5,
-                    "precision": 1.0,
-                    "ppr": 0.1667,
-                    "pprev": 0.3333,
-                    "prev": 0.6667
-                },
-                {
-                    "attribute_name": "race",
-                    "attribute_value": "asian",
-                    "tpr": 0.0,
-                    "tnr": 0.3333,
-                    "for": 0.5,
-                    "fdr": 1.0,
-                    "fpr": 0.6667,
-                    "fnr": 1.0,
-                    "npv": 0.5,
-                    "precision": 0.0,
-                    "ppr": 0.3333,
-                    "pprev": 0.5,
-                    "prev": 0.25
-                },
-                {
-                    "attribute_name": "race",
-                    "attribute_value": "caucasian",
-                    "tpr": 0.75,
-                    "tnr": 1.0,
-                    "for": 0.25,
-                    "fdr": 0.0,
-                    "fpr": 0.0,
-                    "fnr": 0.25,
-                    "npv": 0.75,
-                    "precision": 1.0,
-                    "ppr": 0.5,
-                    "pprev": 0.4286,
-                    "prev": 0.5714
-                }
-            ]
+            "fpr": 0.25,
+            "tpr": 0.3
         },
         {
-            "test_name": "Aequitas Bias",
-            "test_category": "bias",
-            "test_type": "bias",
-            "protected_class": "gender",
-            "test_id": "bias_bias_gender",
-            "reference_group": "male",
-            "thresholds": {
-                "min": 0.8,
-                "max": 1.2
-            },
-            "values": [
-                {
-                    "attribute_name": "gender",
-                    "attribute_value": "female",
-                    "ppr_disparity": 1.0,
-                    "pprev_disparity": 1.3333,
-                    "precision_disparity": 1.0,
-                    "fdr_disparity": 1.0,
-                    "for_disparity": 0.8333,
-                    "fpr_disparity": 1.3333,
-                    "fnr_disparity": 0.6667,
-                    "tpr_disparity": 1.3333,
-                    "tnr_disparity": 0.8889,
-                    "npv_disparity": 1.1111
-                },
-                {
-                    "attribute_name": "gender",
-                    "attribute_value": "male",
-                    "ppr_disparity": 1.0,
-                    "pprev_disparity": 1.0,
-                    "precision_disparity": 1.0,
-                    "fdr_disparity": 1.0,
-                    "for_disparity": 1.0,
-                    "fpr_disparity": 1.0,
-                    "fnr_disparity": 1.0,
-                    "tpr_disparity": 1.0,
-                    "tnr_disparity": 1.0,
-                    "npv_disparity": 1.0
-                }
-            ]
+            "fpr": 0.5,
+            "tpr": 0.65
         },
         {
-            "test_name": "Aequitas Group",
-            "test_category": "bias",
-            "test_type": "group",
-            "protected_class": "gender",
-            "test_id": "bias_group_gender",
-            "reference_group": null,
-            "values": [
-                {
-                    "attribute_name": "gender",
-                    "attribute_value": "female",
-                    "tpr": 0.6667,
-                    "tnr": 0.6667,
-                    "for": 0.3333,
-                    "fdr": 0.3333,
-                    "fpr": 0.3333,
-                    "fnr": 0.3333,
-                    "npv": 0.6667,
-                    "precision": 0.6667,
-                    "ppr": 0.5,
-                    "pprev": 0.5,
-                    "prev": 0.5
-                },
-                {
-                    "attribute_name": "gender",
-                    "attribute_value": "male",
-                    "tpr": 0.5,
-                    "tnr": 0.75,
-                    "for": 0.4,
-                    "fdr": 0.3333,
-                    "fpr": 0.25,
-                    "fnr": 0.5,
-                    "npv": 0.6,
-                    "precision": 0.6667,
-                    "ppr": 0.5,
-                    "pprev": 0.375,
-                    "prev": 0.5
-                }
-            ]
-        }
-    ],
-    "performance": [
-        {
-            "test_name": "Classification Metrics",
-            "test_category": "performance",
-            "test_type": "classification_metrics",
-            "test_id": "performance_classification_metrics",
-            "values": {
-                "accuracy": 0.625,
-                "precision": 0.6,
-                "recall": 0.75,
-                "f1_score": 0.6667,
-                "auc": 0.625
-            }
+            "fpr": 0.75,
+            "tpr": 0.9
         },
         {
-            "test_name": "Regression Metrics",
-            "test_category": "performance",
-            "test_type": "regression_metrics",
-            "test_id": "performance_regression_metrics",
-            "values": {
-                "rmse": 0.6124,
-                "mae": 0.375,
-                "r2_score": -0.5
-            }
-        }
-    ],
-    "data_drift": [
-        {
-            "test_name": "Jensen-Shannon",
-            "test_category": "data_drift",
-            "test_type": "jensen_shannon",
-            "metric": "distance",
-            "test_id": "data_drift_jensen_shannon_distance",
-            "values": {
-                "ownership": 0.0892,
-                "amount": 0.073,
-                "num_cards": 0.0405
-            }
-        },
-        {
-            "test_name": "Kolmogorov-Smirnov",
-            "test_category": "data_drift",
-            "test_type": "kolmogorov_smirnov",
-            "metric": "p_value",
-            "test_id": "data_drift_kolmogorov_smirnov_p_value",
-            "values": {
-                "amount": 0.6374,
-                "num_cards": 1.0
-            }
-        },
-        {
-            "test_name": "Epps-Singleton",
-            "test_category": "data_drift",
-            "test_type": "epps_singleton",
-            "metric": "p_value",
-            "test_id": "data_drift_epps_singleton_p_value",
-            "values": {
-                "amount": 0.8544,
-                "num_cards": 0.9244
-            }
-        },
-        {
-            "test_name": "Kolmogorov-Smirnov",
-            "test_category": "data_drift",
-            "test_type": "kolmogorov_smirnov",
-            "metric": "statistic",
-            "test_id": "data_drift_kolmogorov_smirnov_statistic",
-            "values": {
-                "amount": 0.375,
-                "num_cards": 0.125
-            }
-        },
-        {
-            "test_name": "Epps-Singleton",
-            "test_category": "data_drift",
-            "test_type": "epps_singleton",
-            "metric": "statistic",
-            "test_id": "data_drift_epps_singleton_statistic",
-            "values": {
-                "amount": 1.3407,
-                "num_cards": 0.9009
-            }
-        },
-        {
-            "test_name": "Summary",
-            "test_category": "data_drift",
-            "test_type": "summary",
-            "metric": "pandas_describe",
-            "test_id": "data_drift_summary_pandas_describe",
-            "values": {
-                "numerical_comparisons": {
-                    "amount": {
-                        "baseline": {
-                            "count": 8.0,
-                            "mean": 159.375,
-                            "std": 32.56175451573298,
-                            "min": 100.0,
-                            "25%": 143.75,
-                            "50%": 175.0,
-                            "75%": 175.0,
-                            "max": 200.0
-                        },
-                        "sample": {
-                            "count": 6.0,
-                            "mean": 171.66666666666666,
-                            "std": 28.751811537130433,
-                            "min": 125.0,
-                            "25%": 156.25,
-                            "50%": 182.5,
-                            "75%": 190.0,
-                            "max": 200.0
-                        }
-                    },
-                    "num_cards": {
-                        "baseline": {
-                            "count": 8.0,
-                            "mean": 3.5,
-                            "std": 3.2071349029490928,
-                            "min": 0.0,
-                            "25%": 1.0,
-                            "50%": 2.5,
-                            "75%": 5.5,
-                            "max": 9.0
-                        },
-                        "sample": {
-                            "count": 6.0,
-                            "mean": 3.3333333333333335,
-                            "std": 2.7325202042558927,
-                            "min": 1.0,
-                            "25%": 1.25,
-                            "50%": 2.5,
-                            "75%": 4.5,
-                            "max": 8.0
-                        }
-                    }
-                },
-                "categorical_comparisons": {
-                    "ownership": {
-                        "baseline": {
-                            "count": 8,
-                            "unique": 2,
-                            "top": "own",
-                            "freq": 5
-                        },
-                        "sample": {
-                            "count": 6,
-                            "unique": 2,
-                            "top": "rent",
-                            "freq": 3
-                        }
-                    }
-                }
-            }
-        },
-        {
-            "test_name": "Kullback-Leibler",
-            "test_category": "data_drift",
-            "test_type": "kullback_leibler",
-            "metric": "divergence",
-            "test_id": "data_drift_kullback_leibler_divergence",
-            "values": {
-                "amount": 0.6059,
-                "num_cards": 0.1525,
-                "ownership": 0.0316
-            }
-        }
-    ],
-    "concept_drift": [
-        {
-            "test_name": "Jensen-Shannon",
-            "test_category": "concept_drift",
-            "test_type": "jensen_shannon",
-            "metric": "distance",
-            "test_id": "concept_drift_jensen_shannon_distance",
-            "values": {
-                "label": 0.0166
-            }
-        },
-        {
-            "test_name": "Kolmogorov-Smirnov",
-            "test_category": "concept_drift",
-            "test_type": "kolmogorov_smirnov",
-            "metric": "p_value",
-            "test_id": "concept_drift_kolmogorov_smirnov_p_value",
-            "values": {
-                "label": 1.0
-            }
-        },
-        {
-            "test_name": "Epps-Singleton",
-            "test_category": "concept_drift",
-            "test_type": "epps_singleton",
-            "metric": "p_value",
-            "test_id": "concept_drift_epps_singleton_p_value",
-            "values": {
-                "label": 1.0
-            }
-        },
-        {
-            "test_name": "Kolmogorov-Smirnov",
-            "test_category": "concept_drift",
-            "test_type": "kolmogorov_smirnov",
-            "metric": "statistic",
-            "test_id": "concept_drift_kolmogorov_smirnov_statistic",
-            "values": {
-                "label": 0.0
-            }
-        },
-        {
-            "test_name": "Epps-Singleton",
-            "test_category": "concept_drift",
-            "test_type": "epps_singleton",
-            "metric": "statistic",
-            "test_id": "concept_drift_epps_singleton_statistic",
-            "values": {
-                "label": 0.0
-            }
-        },
-        {
-            "test_name": "Summary",
-            "test_category": "concept_drift",
-            "test_type": "summary",
-            "metric": "pandas_describe",
-            "test_id": "concept_drift_summary_pandas_describe",
-            "values": {
-                "numerical_comparisons": {
-                    "label": {
-                        "baseline": {
-                            "count": 8.0,
-                            "mean": 0.5,
-                            "std": 0.5345224838248488,
-                            "min": 0.0,
-                            "25%": 0.0,
-                            "50%": 0.5,
-                            "75%": 1.0,
-                            "max": 1.0
-                        },
-                        "sample": {
-                            "count": 6.0,
-                            "mean": 0.5,
-                            "std": 0.5477225575051661,
-                            "min": 0.0,
-                            "25%": 0.0,
-                            "50%": 0.5,
-                            "75%": 1.0,
-                            "max": 1.0
-                        }
-                    }
-                },
-                "categorical_comparisons": {}
-            }
-        },
-        {
-            "test_name": "Kullback-Leibler",
-            "test_category": "concept_drift",
-            "test_type": "kullback_leibler",
-            "metric": "divergence",
-            "test_id": "concept_drift_kullback_leibler_divergence",
-            "values": {
-                "label": 0.0
-            }
-        }
-    ],
-    "stability": [
-        {
-            "test_name": "Stability Analysis",
-            "test_category": "stability",
-            "test_type": "stability_analysis",
-            "test_id": "stability_stability_analysis",
-            "values": {
-                "amount": {
-                    "stability_analysis_table": [
-                        {
-                            "bucket": "100 125 ",
-                            "train_count": 3.0,
-                            "eval_count": 1.0,
-                            "train_percent": 0.25,
-                            "eval_percent": 0.125,
-                            "train_mean_score": 0.6666666666666666,
-                            "eval_mean_score": 0.0,
-                            "score_mean_diff": -0.6666666666666666,
-                            "train_cum_percent": 0.25,
-                            "eval_cum_percent": 0.125,
-                            "ks_calc": 0.125,
-                            "chisq_calc": 0.0625,
-                            "psi_calc": 0.08664339756999316
-                        },
-                        {
-                            "bucket": "175 ",
-                            "train_count": 6.0,
-                            "eval_count": 2.0,
-                            "train_percent": 0.5,
-                            "eval_percent": 0.25,
-                            "train_mean_score": 0.6666666666666666,
-                            "eval_mean_score": 0.0,
-                            "score_mean_diff": -0.6666666666666666,
-                            "train_cum_percent": 0.75,
-                            "eval_cum_percent": 0.375,
-                            "ks_calc": 0.375,
-                            "chisq_calc": 0.125,
-                            "psi_calc": 0.17328679513998632
-                        },
-                        {
-                            "bucket": "(-inf, 150.0]",
-                            "train_count": 2.0,
-                            "eval_count": 1.0,
-                            "train_percent": 0.16666666666666666,
-                            "eval_percent": 0.125,
-                            "train_mean_score": 1.0,
-                            "eval_mean_score": 1.0,
-                            "score_mean_diff": 0.0,
-                            "train_cum_percent": 0.9166666666666666,
-                            "eval_cum_percent": 0.5,
-                            "ks_calc": 0.41666666666666663,
-                            "chisq_calc": 0.010416666666666663,
-                            "psi_calc": 0.011986753018824202
-                        },
-                        {
-                            "bucket": "(150.0, inf]",
-                            "train_count": 1.0,
-                            "eval_count": 4.0,
-                            "train_percent": 0.08333333333333333,
-                            "eval_percent": 0.5,
-                            "train_mean_score": 0.0,
-                            "eval_mean_score": 0.0,
-                            "score_mean_diff": 0.0,
-                            "train_cum_percent": 1.0,
-                            "eval_cum_percent": 1.0,
-                            "ks_calc": 0.0,
-                            "chisq_calc": 2.083333333333334,
-                            "psi_calc": 0.7465664455116896
-                        }
-                    ],
-                    "stability_index": 1.0184833912404931,
-                    "stability_chisq": 2.2812500000000004,
-                    "stability_ks": 0.41666666666666663
-                },
-                "ownership": {
-                    "stability_analysis_table": [
-                        {
-                            "bucket": "own",
-                            "train_count": 7.0,
-                            "eval_count": 5.0,
-                            "train_percent": 0.5833333333333334,
-                            "eval_percent": 0.625,
-                            "train_mean_score": 0.5714285714285714,
-                            "eval_mean_score": 0.0,
-                            "score_mean_diff": -0.5714285714285714,
-                            "train_cum_percent": 0.5833333333333334,
-                            "eval_cum_percent": 0.625,
-                            "ks_calc": 0.04166666666666663,
-                            "chisq_calc": 0.002976190476190471,
-                            "psi_calc": 0.0028747029786229733
-                        },
-                        {
-                            "bucket": "rent",
-                            "train_count": 5.0,
-                            "eval_count": 3.0,
-                            "train_percent": 0.4166666666666667,
-                            "eval_percent": 0.375,
-                            "train_mean_score": 0.8,
-                            "eval_mean_score": 0.3333333333333333,
-                            "score_mean_diff": -0.46666666666666673,
-                            "train_cum_percent": 1.0,
-                            "eval_cum_percent": 1.0,
-                            "ks_calc": 0.0,
-                            "chisq_calc": 0.00416666666666667,
-                            "psi_calc": 0.004390021485742769
-                        }
-                    ],
-                    "stability_index": 0.007264724464365742,
-                    "stability_chisq": 0.007142857142857141,
-                    "stability_ks": 0.04166666666666663
-                },
-                "num_cards": {
-                    "stability_analysis_table": [
-                        {
-                            "bucket": "(-inf, 1.0]",
-                            "train_count": 5.0,
-                            "eval_count": 2.0,
-                            "train_percent": 0.4166666666666667,
-                            "eval_percent": 0.25,
-                            "train_mean_score": 0.8,
-                            "eval_mean_score": 0.5,
-                            "score_mean_diff": -0.30000000000000004,
-                            "train_cum_percent": 0.4166666666666667,
-                            "eval_cum_percent": 0.25,
-                            "ks_calc": 0.16666666666666669,
-                            "chisq_calc": 0.06666666666666668,
-                            "psi_calc": 0.08513760396099847
-                        },
-                        {
-                            "bucket": "(1.0, 6.0]",
-                            "train_count": 3.0,
-                            "eval_count": 5.0,
-                            "train_percent": 0.25,
-                            "eval_percent": 0.625,
-                            "train_mean_score": 0.6666666666666666,
-                            "eval_mean_score": 0.0,
-                            "score_mean_diff": -0.6666666666666666,
-                            "train_cum_percent": 0.6666666666666667,
-                            "eval_cum_percent": 0.875,
-                            "ks_calc": 0.20833333333333326,
-                            "chisq_calc": 0.5625,
-                            "psi_calc": 0.34360902445280816
-                        },
-                        {
-                            "bucket": "(6.0, inf]",
-                            "train_count": 4.0,
-                            "eval_count": 1.0,
-                            "train_percent": 0.3333333333333333,
-                            "eval_percent": 0.125,
-                            "train_mean_score": 0.5,
-                            "eval_mean_score": 0.0,
-                            "score_mean_diff": -0.5,
-                            "train_cum_percent": 1.0,
-                            "eval_cum_percent": 1.0,
-                            "ks_calc": 0.0,
-                            "chisq_calc": 0.13020833333333331,
-                            "psi_calc": 0.20433942771077626
-                        }
-                    ],
-                    "stability_index": 0.6330860561245829,
-                    "stability_chisq": 0.7593749999999999,
-                    "stability_ks": 0.20833333333333326
-                },
-                "score": {
-                    "stability_analysis_table": [
-                        {
-                            "bucket": "0",
-                            "train_count": 4.0,
-                            "eval_count": 7.0,
-                            "train_percent": 0.3333333333333333,
-                            "eval_percent": 0.875,
-                            "train_mean_score": 0.0,
-                            "eval_mean_score": 0.0,
-                            "score_mean_diff": 0.0,
-                            "train_cum_percent": 0.3333333333333333,
-                            "eval_cum_percent": 0.875,
-                            "ks_calc": 0.5416666666666667,
-                            "chisq_calc": 0.8802083333333336,
-                            "psi_calc": 0.5227521520236097
-                        },
-                        {
-                            "bucket": "1",
-                            "train_count": 8.0,
-                            "eval_count": 1.0,
-                            "train_percent": 0.6666666666666666,
-                            "eval_percent": 0.125,
-                            "train_mean_score": 1.0,
-                            "eval_mean_score": 1.0,
-                            "score_mean_diff": 0.0,
-                            "train_cum_percent": 1.0,
-                            "eval_cum_percent": 1.0,
-                            "ks_calc": 0.0,
-                            "chisq_calc": 0.44010416666666663,
-                            "psi_calc": 0.9067372348513221
-                        }
-                    ],
-                    "stability_index": 1.4294893868749319,
-                    "stability_chisq": 1.3203125000000002,
-                    "stability_ks": 0.5416666666666667
-                }
-            }
-        }
-    ],
-    "volumetrics": [
-        {
-            "test_name": "Count",
-            "test_category": "volumetrics",
-            "test_type": "count",
-            "test_id": "volumetrics_count",
-            "values": {
-                "record_count": 8
-            }
-        },
-        {
-            "test_name": "Count Comparison",
-            "test_category": "volumetrics",
-            "test_type": "count_comparison",
-            "test_id": "volumetrics_count_comparison",
-            "values": {
-                "dataframe_1_record_count": 8,
-                "dataframe_2_record_count": 6,
-                "record_count_difference": 2
-            }
-        },
-        {
-            "test_name": "Summary",
-            "test_category": "volumetrics",
-            "test_type": "summary",
-            "test_id": "volumetrics_summary",
-            "values": {
-                "numerical_summary": {
-                    "amount": {
-                        "count": 8.0,
-                        "mean": 159.375,
-                        "std": 32.56175451573298,
-                        "min": 100.0,
-                        "25%": 143.75,
-                        "50%": 175.0,
-                        "75%": 175.0,
-                        "max": 200.0
-                    },
-                    "num_cards": {
-                        "count": 8.0,
-                        "mean": 3.5,
-                        "std": 3.2071349029490928,
-                        "min": 0.0,
-                        "25%": 1.0,
-                        "50%": 2.5,
-                        "75%": 5.5,
-                        "max": 9.0
-                    }
-                },
-                "categorical_summary": {
-                    "ownership": {
-                        "count": 8,
-                        "unique": 2,
-                        "top": "own",
-                        "freq": 5
-                    }
-                }
-            }
-        },
-        {
-            "test_name": "Identifier Comparison",
-            "test_category": "volumetrics",
-            "test_type": "identifier_comparison",
-            "test_id": "volumetrics_identifier_comparison",
-            "values": {
-                "identifiers_match": false,
-                "dataframe_1": {
-                    "identifier_columns": [
-                        "id"
-                    ],
-                    "record_count": 8,
-                    "unique_identifier_count": 8,
-                    "extra_identifiers": {
-                        "total": 4,
-                        "breakdown": {
-                            "4": 1,
-                            "6": 1,
-                            "5": 1,
-                            "7": 1
-                        }
-                    }
-                },
-                "dataframe_2": {
-                    "identifier_columns": [
-                        "id"
-                    ],
-                    "record_count": 6,
-                    "unique_identifier_count": 6,
-                    "extra_identifiers": {
-                        "total": 2,
-                        "breakdown": {
-                            "12": 1,
-                            "11": 1
-                        }
-                    }
-                }
-            }
+            "fpr": 1,
+            "tpr": 1
         }
     ]
 }
